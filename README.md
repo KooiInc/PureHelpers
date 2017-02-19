@@ -4,7 +4,7 @@ Importable pure ES helper methods
 ##Usage:
 
 ```javascript
-const helpers =  require("./PureHelpers").import("randomString, numberBetween".split(","), {});
+const helpers = require("./PureHelpers").import("randomString, numberBetween".split(","), {});
 helpers.randomString();
 Number.prototype.between = function (min, max) { return helpers.numberBetween(this, min, max); }
 // etc.
@@ -54,8 +54,7 @@ It left-pads a [`number`] with [`base`] - [`number`].length [`char`]
 Example:
 
 ```javascript
-> padLeft(15, 1000, "-");
-> "0015"
+padLeft(15, 1000, "-"); // => "0015"
 ```
 
 Returns `String`
@@ -68,23 +67,20 @@ It is a string templating method, using {[someproperty]} in string and a token o
 Examples
 
 ```javascript
-> interpolate("Hello {world}", {world: "folks"});
-> "Hello folks"
-> interpolate("Hello {world}\n", [{world: "folks"}, {world: "Pete"}]);
-> "Hello folks\nHello Pete"
+interpolate("Hello {world}", {world: "folks"}); // => "Hello folks"
+interpolate("Hello {world}\n", [{world: "folks"}, {world: "Pete"}]); //=> "Hello folks\nHello Pete"
 ```
 
 You can use it to extend `String.prototype`:
 
-```
-> String.prototype.interpolate = function (tokens) { return interpolate(this, tokens); };
+```javascript
+String.prototype.interpolate = function (tokens) { return interpolate(this, tokens); };
 ```
     
 Example usage:
 
 ```javascript
-> "Hello {world}\n".interpolate([{world: "folks"}, {world: "Pete"}]);
-> "Hello folks\nHello Pete"
+"Hello {world}\n".interpolate([{world: "folks"}, {world: "Pete"}]); // => "Hello folks\nHello Pete"
 ```
 
 Returns `String`
@@ -99,8 +95,7 @@ It tries to parse string [`dateStringCandidateValue`] into a Date instance using
 Example: 
 
 ```javascript
-> tryParseDate("07/02/2015", "mdy")
-> (Date)2015-07-02
+tryParseDate("07/02/2015", "mdy"); // => (Date)2015-07-02
 ```
 
 Returns a `Date` instance or [`null`] if parsing fails
@@ -116,22 +111,20 @@ keys, e.g. `{methoda: 1, methodb: 2}`
 Example: 
 
 ```javascript
-> const importedMethods = [lib].import({numberBetween: 1, truncateString: 1}, {});
-> importedMethods.numberBetween(15, 5, 20);
-> true
+const importedMethods = [lib].import({numberBetween: 1, truncateString: 1}, {});
+importedMethods.numberBetween(15, 5, 20); // => true
 ```
 
 If you want to import methods in the *current* namespace directly, use
 
 ```javascript
-> [lib].import({numberBetween: 1, truncateString: 1}, function() { return this; }());
+[lib].import({numberBetween: 1, truncateString: 1}, function() { return this; }());
 ```
 
 Now within your library file you can call
 
 ```javascript
-> numberBetween(15, 5, 20);
-> true
+numberBetween(15, 5, 20); // => true
 ```
 
 Note: a non existing method will translate to a method returning an error string
