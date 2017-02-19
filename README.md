@@ -7,26 +7,26 @@ Importable methods. Note: all methods are pure.
 
 `randomString (prefix = "", minRandomNumberValue = 10000, maxRandomNumberValue = 10000000)`
 
-=> It creates a random (hex) number string, possibly preceded with a prefix
+It creates a random (hex) number string, possibly preceded with a prefix
 
    Returns string
 
 --
 `repeatString (string2Repeat, n2Repeat)`
 
-=> It returns a string where [`string2Repeat`] is repeated [`n2Repeat`] times
+It returns a string where [`string2Repeat`] is repeated [`n2Repeat`] times
 
 -- 
 `checkPostcode (postcodeStringCandidate)`
 
-=> It checks a dutch postal code to be valid
+It checks a dutch postal code to be valid
 
    Returns boolean
 
 -- 
 `truncateString (string2Truncate, truncateAtPosition, truncateOnWholeWordsOnly)`
 
-=> It truncates [`string2Truncate`] @ position [`truncateAtPosition`]
+It truncates [`string2Truncate`] @ position [`truncateAtPosition`]
 
    if [`truncateOnWholeWordsOnly`] is true, [`string2Truncate`] will be truncated right after the last word in the truncated string
 
@@ -35,14 +35,14 @@ Importable methods. Note: all methods are pure.
 -- 
 `numberBetween (number, min, max)` 
 
-=> It determines if [`number`] falls between [`min`] and [`max`]
+It determines if [`number`] falls between [`min`] and [`max`]
    
 Returns boolean
 
 -- 
 `padLeft (number, base = 10, char = "0")`
 
-=> It left-pads a [`number`] with [`base`] - [`number`].length [`char`]
+It left-pads a [`number`] with [`base`] - [`number`].length [`char`]
    
 Example:
 
@@ -56,7 +56,7 @@ Returns string
 -- 
 `interpolate (string2Interpolate, tokens)`
 
-=> It is a string templating method, using {[someproperty]} in string and a token object to replace [someproperty]
+It is a string templating method, using {[someproperty]} in string and a token object to replace [someproperty]
    
 Examples
 
@@ -85,7 +85,7 @@ Returns string
 -- 
 `tryParseDate (dateStringCandidateValue, format = "dmy")`
 
-=> It tries to parse string [dateStringCandidateValue] into a Date instance using [format]
+It tries to parse string [dateStringCandidateValue] into a Date instance using [format]
    
 [format] "dmy" = [d]ate, [m]onth, [y]ear
 
@@ -101,9 +101,10 @@ Returns a Date instance or [null] if parsing fails
 -- 
 (this module) `import (methods2Import, intoNamespace = {})` 
 
-=> It imports [`methods2Import`] (array or object) from [`methods`] (this lib) into namespace [`intoNamespace`]
+It imports [`methods2Import`] (array or object) from [`methods`] (this lib) into namespace [`intoNamespace`]
    
-[`methods2Import`] May be an array of strings, e.g.  ["methoda", "methodb"], or an object with method names as keys, e.g. {methoda: 1, methodb: 2}
+[`methods2Import`] May be an array of strings, e.g. `["methoda", "methodb"]`, or an object with method names as 
+keys, e.g. `{methoda: 1, methodb: 2}`
 
 Example: 
 
