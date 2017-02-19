@@ -53,8 +53,7 @@ It left-pads a [`number`] with [`base`] - [`number`].length [`char`]
 Example:
 
 ```javascript
- padLeft(15, 1000, "-"); //-> "0015""
-```
+padLeft(15, 1000, "-"); //-> "0015""```
 
 Returns `String`
 
@@ -68,24 +67,20 @@ token object to replace [someproperty]
 Example:
 
 ```javascript
- interpolate("Hello {world}", {world: "folks"}); //-> "Hello folks"
-```
+interpolate("Hello {world}", {world: "folks"}); //-> "Hello folks"```
 
 ```javascript
- interpolate("Hello {world}\n", [{world: "folks"}, {world: "Pete"}]); //-> "Hello folks\nHello Pete"
-```
+interpolate("Hello {world}\n", [{world: "folks"}, {world: "Pete"}]); //-> "Hello folks\nHello Pete"```
 
 You can use it to extend String.prototype:
 
 ```javascript
- String.prototype.interpolate = function (tokens) { return interpolate(this, tokens); };
-```
+String.prototype.interpolate = function (tokens) { return interpolate(this, tokens); };```
 
 Example usage:
 
 ```javascript
- "Hello {world}\n".interpolate([{world: "folks"}, {world: "Pete"}]); //-> "Hello folks\nHello Pete"
-```
+"Hello {world}\n".interpolate([{world: "folks"}, {world: "Pete"}]); //-> "Hello folks\nHello Pete"```
 
 Returns `String`
 
@@ -99,8 +94,7 @@ It tries to parse string [`dateStringCandidateValue`] into a Date instance using
 Example:
 
 ```javascript
- tryParseDate("07/02/2015", "mdy"); //-> (Date)2015-07-01
-```
+tryParseDate("07/02/2015", "mdy"); //-> (Date)2015-07-01```
 
 Returns a `Date` instance or [null] if parsing fails
 
@@ -114,23 +108,21 @@ It imports [`methods2Import`] (array or object) from [`methods`] (this lib) into
 Example:
 
 ```javascript
- const importedMethods = [lib].import({numberBetween: 1, truncateString: 1}, {});
-```
+const importedMethods = [lib].import({numberBetween: 1, truncateString: 1}, {});```
 
 ```javascript
- importedMethods.numberBetween(15, 5, 20); //-> true
-```
+importedMethods.numberBetween(15, 5, 20); //-> true```
 
 If you want to import methods in the *current* namespace directly, use
 
 ```javascript
- [lib].import({numberBetween: 1, truncateString: 1}, function() { return this; }());
-```
+[lib].import({numberBetween: 1, truncateString: 1}, function() { return this; }());```
 
 Now within your library file you can call
 
 ```javascript
- numberBetween(15, 5, 20); //-> true
-```
+numberBetween(15, 5, 20); //-> true```
 
 Note: a non existing method will translate to a method returning an error string
+
+Returns [`intoNamespace`]
