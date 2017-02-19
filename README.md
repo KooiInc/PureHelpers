@@ -26,9 +26,9 @@ Returns `Boolean`
 
 It truncates [`string2Truncate`] @ position [`truncateAtPosition`]
 
-   if [`truncateOnWholeWordsOnly`] is true, [`string2Truncate`] will be truncated right after the last word in the truncated string
+if [`truncateOnWholeWordsOnly`] is true, [`string2Truncate`] will be truncated right after the last word in the truncated string
 
-   Returns string
+Returns `String`
 
 -- 
 `numberBetween (number, min, max)` 
