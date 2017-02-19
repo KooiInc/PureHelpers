@@ -1,8 +1,6 @@
 # PureHelpers
 Importable pure ES helper methods
 
-Importable methods. Note: all methods are pure.
-
 --
 
 `randomString (prefix = "", minRandomNumberValue = 10000, maxRandomNumberValue = 10000000)`
