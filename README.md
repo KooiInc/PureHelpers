@@ -1,6 +1,15 @@
 # PureHelpers
 Importable pure ES helper methods
 
+##Usage:
+
+```javascript
+const helpers =  require("./PureHelpers").import("randomString, numberBetween".split(","), {});
+helpers.randomString();
+Number.prototype.between = function (min, max) { return helpers.numberBetween(this, min, max); }
+// etc.
+```
+
 --
 
 `randomString (prefix = "", minRandomNumberValue = 10000, maxRandomNumberValue = 10000000)`
