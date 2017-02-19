@@ -7,7 +7,7 @@ Importable pure ES helper methods
 
 It creates a random (hex) number string, possibly preceded with a prefix
 
-   Returns string
+Returns `String`
 
 --
 `repeatString (string2Repeat, n2Repeat)`
@@ -17,9 +17,9 @@ It returns a string where [`string2Repeat`] is repeated [`n2Repeat`] times
 -- 
 `checkPostcode (postcodeStringCandidate)`
 
-It checks a dutch postal code to be valid
+It checks a *dutch* postal code to be valid
 
-   Returns boolean
+Returns `Boolean`
 
 -- 
 `truncateString (string2Truncate, truncateAtPosition, truncateOnWholeWordsOnly)`
@@ -35,7 +35,7 @@ It truncates [`string2Truncate`] @ position [`truncateAtPosition`]
 
 It determines if [`number`] falls between [`min`] and [`max`]
    
-Returns boolean
+Returns `Boolean`
 
 -- 
 `padLeft (number, base = 10, char = "0")`
@@ -49,7 +49,7 @@ Example:
 > "0015"
 ```
 
-Returns string
+Returns `String`
 
 -- 
 `interpolate (string2Interpolate, tokens)`
@@ -65,7 +65,7 @@ Examples
 > "Hello folks\nHello Pete"
 ```
 
-You can use it to extend String.prototype:
+You can use it to extend `String.prototype`:
 
 ```
 > String.prototype.interpolate = function (tokens) { return interpolate(this, tokens); };
@@ -78,14 +78,14 @@ Example usage:
 > "Hello folks\nHello Pete"
 ```
 
-Returns string
+Returns `String`
 
 -- 
 `tryParseDate (dateStringCandidateValue, format = "dmy")`
 
-It tries to parse string [dateStringCandidateValue] into a Date instance using [format]
+It tries to parse string [`dateStringCandidateValue`] into a Date instance using [`format`]
    
-[format] "dmy" = [d]ate, [m]onth, [y]ear
+[`format`] "dmy" = [d]ate, [m]onth, [y]ear
 
 Example: 
 
@@ -94,7 +94,7 @@ Example:
 > (Date)2015-07-02
 ```
 
-Returns a Date instance or [null] if parsing fails
+Returns a `Date` instance or [`null`] if parsing fails
 
 -- 
 (this module) `import (methods2Import, intoNamespace = {})` 
