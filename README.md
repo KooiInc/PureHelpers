@@ -93,7 +93,7 @@ Example:
 
 ```
 > tryParseDate("07/02/2015", "mdy")
-> (Date)2015-07-01
+> (Date)2015-07-02
 ```
 
 Returns a Date instance or [null] if parsing fails
