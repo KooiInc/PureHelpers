@@ -34,7 +34,7 @@ Returns `String`
 
 **Method** `repeatString (string2Repeat, n2Repeat)`
 
-**It** It returns a `String` where [`string2Repeat`] is repeated [`n2Repeat`] times
+**It** returns a `String` where [`string2Repeat`] is repeated [`n2Repeat`] times
 
 
 --
