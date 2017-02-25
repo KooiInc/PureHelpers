@@ -13,6 +13,13 @@ const methods = {
             postcodeStringCandidate = postcodeStringCandidate.replace(/\s+/g, '');
             return /^(\d{4,4}[a-z]{2,2})$/i.test(postcodeStringCandidate);
         },
+    cleanupWhitespace: string2Cleanup => {
+            return str.replace(/\n|\r/g, '')
+            .replace(/\s{2,}/g, ' ')
+            .replace(/(>\s+<)/g, '><')
+            .replace(/ {1,}>/g, '>')
+            .replace(/^\s+|\s+$/, '');
+        },
     truncateString: (string2Truncate, truncateAtPosition, truncateOnWholeWordsOnly) => {
             if (truncateAtPosition >= string2Truncate.length) { return string2Truncate; }
             const truncatedRaw = string2Truncate.slice(0, truncateAtPosition);
@@ -84,4 +91,4 @@ const methods = {
         return this.importA(methods2Import, intoNamespace);
     },
 };
-module.exports = { import: methods.import.bind(methods) };
+module.exports = { import: methods.import.bind(methods) }

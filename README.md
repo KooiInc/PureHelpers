@@ -49,6 +49,24 @@ Returns `Boolean`
 --
 
 
+**Method** `cleanupWhitespace string2Cleanup`
+
+**It** removes redundant whitespace from [`string2Cleanup`] 
+
+Example
+
+```javascript
+cleanupWhitespace(\`  free me of all      that
+whitespace here     \`); //=> "free me of all that whitespace here"
+```
+
+Returns `String`
+
+
+
+--
+
+
 **Method** `truncateString (string2Truncate, truncateAtPosition, truncateOnWholeWordsOnly)`
 
 **It** truncates [`string2Truncate`] @ position [`truncateAtPosition`] 
