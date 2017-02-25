@@ -22,29 +22,27 @@ numberBetween(15, 5, 20); //-> true
 Note: a non existing method will translate to a method returning an error string
 
 ##Current methods available##
-
---
-`randomString (prefix = "", minRandomNumberValue = 10000, maxRandomNumberValue = 10000000)`
+*Method* `randomString (prefix = "", minRandomNumberValue = 10000, maxRandomNumberValue = 10000000)`
 
 It creates a random (hex) number string, possibly preceded with a prefix
 
 Returns `String`
-
 --
-`repeatString (string2Repeat, n2Repeat)`
+
+*Method* `repeatString (string2Repeat, n2Repeat)`
 
 It returns a `String` where [`string2Repeat`] is repeated [`n2Repeat`] times
 
-
 --
-`checkPostcode (postcodeStringCandidate)`
+
+*Method* `checkPostcode (postcodeStringCandidate)`
 
 It checks a dutch postal code to be valid
 
 Returns `Boolean`
-
 --
-`truncateString (string2Truncate, truncateAtPosition, truncateOnWholeWordsOnly)`
+
+*Method* `truncateString (string2Truncate, truncateAtPosition, truncateOnWholeWordsOnly)`
 
 It truncates [`string2Truncate`] @ position [`truncateAtPosition`] 
 
@@ -53,18 +51,18 @@ if [`truncateOnWholeWordsOnly`] is true, `string2Truncate` will be truncated rig
 Returns `String`
 
 
-
 --
-`numberBetween (number, min, max)`
+
+*Method* `numberBetween (number, min, max)`
 
 It determines if [`number`] falls between [`min`] and [`max`]
 
 Returns `Boolean`
 
 
-
 --
-`padLeft (number, base = 10, char = "0")`
+
+*Method* `padLeft (number, base = 10, char = "0")`
 
 It left-pads a [`number`] with [`base`] - [`number`].length [`char`] 
 
@@ -77,9 +75,9 @@ padLeft(15, 1000, "-"); //-> "0015"
 Returns `String`
 
 
-
 --
-`interpolate (string2Interpolate, tokens)`
+
+*Method* `interpolate (string2Interpolate, tokens)`
 
 It is a string templating method, using {[someproperty]} in string and a token object to replace [someproperty]
 
@@ -103,9 +101,9 @@ Example usage:
 ```
 
 Returns `String`
-
 --
-`tryParseDate (dateStringCandidateValue, format = "dmy")`
+
+*Method* `tryParseDate (dateStringCandidateValue, format = "dmy")`
 
 It tries to parse string [`dateStringCandidateValue`] into a Date instance using [`format`] 
 
@@ -118,3 +116,4 @@ tryParseDate("07/02/2015", "mdy"); //-> (Date)2015-07-01
 ```
 
 Returns a `Date` instance or 'null' if parsing fails
+--
