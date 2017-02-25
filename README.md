@@ -56,8 +56,8 @@ Returns `Boolean`
 Example
 
 ```javascript
-cleanupWhitespace(\`  free me of all      that
-whitespace here     \`); //=> "free me of all that whitespace here"
+cleanupWhitespace(`  free me of all      that
+whitespace here     `); //=> "free me of all that whitespace here"
 ```
 
 Returns `String`
