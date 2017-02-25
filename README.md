@@ -22,27 +22,32 @@ numberBetween(15, 5, 20); //-> true
 Note: a non existing method will translate to a method returning an error string
 
 ##Current methods available##
-*Method* `randomString (prefix = "", minRandomNumberValue = 10000, maxRandomNumberValue = 10000000)`
+
+
+**Method** `randomString (prefix = "", minRandomNumberValue = 10000, maxRandomNumberValue = 10000000)`
 
 It creates a random (hex) number string, possibly preceded with a prefix
 
 Returns `String`
 --
 
-*Method* `repeatString (string2Repeat, n2Repeat)`
+
+**Method** `repeatString (string2Repeat, n2Repeat)`
 
 It returns a `String` where [`string2Repeat`] is repeated [`n2Repeat`] times
 
 --
 
-*Method* `checkPostcode (postcodeStringCandidate)`
+
+**Method** `checkPostcode (postcodeStringCandidate)`
 
 It checks a dutch postal code to be valid
 
 Returns `Boolean`
 --
 
-*Method* `truncateString (string2Truncate, truncateAtPosition, truncateOnWholeWordsOnly)`
+
+**Method** `truncateString (string2Truncate, truncateAtPosition, truncateOnWholeWordsOnly)`
 
 It truncates [`string2Truncate`] @ position [`truncateAtPosition`] 
 
@@ -53,7 +58,8 @@ Returns `String`
 
 --
 
-*Method* `numberBetween (number, min, max)`
+
+**Method** `numberBetween (number, min, max)`
 
 It determines if [`number`] falls between [`min`] and [`max`]
 
@@ -62,7 +68,8 @@ Returns `Boolean`
 
 --
 
-*Method* `padLeft (number, base = 10, char = "0")`
+
+**Method** `padLeft (number, base = 10, char = "0")`
 
 It left-pads a [`number`] with [`base`] - [`number`].length [`char`] 
 
@@ -77,7 +84,8 @@ Returns `String`
 
 --
 
-*Method* `interpolate (string2Interpolate, tokens)`
+
+**Method** `interpolate (string2Interpolate, tokens)`
 
 It is a string templating method, using {[someproperty]} in string and a token object to replace [someproperty]
 
@@ -103,7 +111,8 @@ Example usage:
 Returns `String`
 --
 
-*Method* `tryParseDate (dateStringCandidateValue, format = "dmy")`
+
+**Method** `tryParseDate (dateStringCandidateValue, format = "dmy")`
 
 It tries to parse string [`dateStringCandidateValue`] into a Date instance using [`format`] 
 
