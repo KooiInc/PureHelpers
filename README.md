@@ -21,6 +21,8 @@ numberBetween(15, 5, 20); //-> true
 
 Note: a non existing method will translate to a method returning an error string
 
+##Current methods available##
+
 --
 `randomString (prefix = "", minRandomNumberValue = 10000, maxRandomNumberValue = 10000000)`
 
