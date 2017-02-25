@@ -51,7 +51,7 @@ Returns `Boolean`
 
 **Method** `cleanupWhitespace string2Cleanup`
 
-**It** removes redundant whitespace from [`string2Cleanup`] 
+**It** removes *all* extra whitespace from [`string2Cleanup`] 
 
 Example
 
