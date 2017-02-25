@@ -91,4 +91,4 @@ const methods = {
         return this.importA(methods2Import, intoNamespace);
     },
 };
-module.exports = { import: methods.import.bind(methods) }
+module.exports = { import: methods.import.bind(methods) };;
