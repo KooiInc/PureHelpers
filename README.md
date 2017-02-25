@@ -55,6 +55,13 @@ It truncates [`string2Truncate`] @ position [`truncateAtPosition`]
 
 if [`truncateOnWholeWordsOnly`] is true, `string2Truncate` will be truncated right after the last word in the truncated string
 
+Examples
+
+```javascript
+truncateString("this is too long", 10); //=> this is to...
+truncateString("this is too long", 10, true); //=> this is...
+```
+
 Returns `String`
 
 
@@ -66,9 +73,15 @@ Returns `String`
 
 It determines if [`number`] falls between [`min`] and [`max`]
 
+Example
+
+```javascript
+let num = 15;
+numberBetween(num, 12, 16); //=> true
+numberBetween(num, 16, 20); //=> false
+```
+
 Returns `Boolean`
-
-
 
 --
 
@@ -77,10 +90,11 @@ Returns `Boolean`
 
 It left-pads a [`number`] with [`base`] - [`number`].length [`char`] 
 
-Example: 
+Examples: 
 
 ```javascript
-padLeft(15, 1000, "-"); //-> "0015"
+padLeft(15, 1000, "-"); //-> "--15"
+padLeft(15, 1000);      //-> "0015"
 ```
 
 Returns `String`
