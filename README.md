@@ -8,6 +8,19 @@ helpers.randomString();
 Number.prototype.between = function (min, max) { return helpers.numberBetween(this, min, max); }
 // etc.
 ```
+If you want to import methods in the *current* namespace directly, use
+
+```javascript
+[lib].import({numberBetween: 1, truncateString: 1}, function() { return this; }())
+```
+Now within your library file you can call
+
+```javascript
+numberBetween(15, 5, 20); //-> true
+```
+
+Note: a non existing method will translate to a method returning an error string
+
 --
 `randomString (prefix = "", minRandomNumberValue = 10000, maxRandomNumberValue = 10000000)`
 
