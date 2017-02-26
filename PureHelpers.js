@@ -7,7 +7,7 @@ const methods = {
                     .toString(16);
             },
     repeatString: (string2Repeat, n2Repeat) => {
-                return Array(n2Repeat).join(string2Repeat);
+                return Array(n2Repeat).join(string2Repeat) + string2Repeat;
             },
     checkPostcode: postcodeStringCandidate => {
                 postcodeStringCandidate = postcodeStringCandidate.replace(/\s+/g, '');
@@ -15,11 +15,12 @@ const methods = {
             },
     cleanupWhitespace: string2Cleanup => {
                 return string2Cleanup
+                .trim()
                 .replace(/\n|\r|\r\n/g, '')
-                .replace(/\s+\B/g, ' ')
+                .replace(/\s{2,}\W/g, ' ')
                 .replace(/(>\s+<)/g, '><')
                 .replace(/ {1,}>/g, '>')
-                .replace(/^\s|^\s+|\s$|\s+$/g, '');
+                .replace(/^\s|^\s+|\s$|\s+$/g, '')
             },
     charAtIsUpperCase: (inputString, atpos) =>{
                 const chr = inputString.charAt(atpos);
@@ -27,7 +28,7 @@ const methods = {
             },
     charAtIsLowerCase: (inputString, atpos) =>{
                 const chr = inputString.charAt(atpos);
-                return /[A-Z]|[\u0080-\u024F]/.test(chr) && chr === chr.toLowerCase();
+                return /[A-Z]|[\u0080-\u024F]/i.test(chr) && chr === chr.toLowerCase();
             },
     truncateString: (string2Truncate, truncateAtPosition, truncateOnWholeWordsOnly) => {
                 if (truncateAtPosition >= string2Truncate.length) {
@@ -40,7 +41,7 @@ const methods = {
             },
     splitAndClean: (string2Split, splitter) => {
                 return string2Split.split(splitter)
-                .map( e => e && String(e).trim().length);
+                .filter( e => e && String(e).trim().length);
             },
     isPrime: number => {
                 let start = 2;
@@ -58,7 +59,7 @@ const methods = {
                             return pre;
                         }, {});
             },
-    uniqueValuesFromArray: inputArray => inputArray.filter(a => !this[a] ? this[a] = true : false, {}),
+    uniqueValuesFromArray: inputArray => inputArray.filter(function(a) {return !this[a] ? this[a] = true : false;}, {}),
     numberBetween: (number, min, max) => {
                 return number > min && number < max;
             },
@@ -84,24 +85,27 @@ const methods = {
                 if (!dateStringCandidateValue) {
                     return null;
                 }
-                const minYear2Parse = 1920;
-                const maxYear2Parse = 2017;
                 let mapFormat = {};
                 format.split("").map((e, i) => (mapFormat[e] = i) && e);
+
                 const dateStr2Array = dateStringCandidateValue.split(/[ :\-\/]/g);
                 let datePart = dateStr2Array.slice(0, 3);
+
                 datePart = [datePart[mapFormat.y],
-                    datePart[mapFormat.m],
-                    datePart[mapFormat.d]
-                ].join('/');
-                var timepart = dateStr2Array.length > 3 && dateStr2Array.slice(3).join(":") || "";
-                var trydate = datePart.length > 3 &&
+                            datePart[mapFormat.m],
+                            datePart[mapFormat.d]
+                ];
+
+                if (datePart[0].length < 4) { return null; }
+                else { datePart = datePart.join("/"); }
+
+                const timepart = dateStr2Array.length > 3 && dateStr2Array.slice(3).join(":") || "";
+                const tryDate = datePart.length > 3 &&
                     new Date([
                             datePart,
                             /:$/.test(timepart) && timepart || timepart + ":"
                         ].join(" ") || new Date(datePart));
-                var fullYear = trydate && trydate.getFullYear();
-                return fullYear && fullYear >= minYear2Parse && fullYear <= maxYear2Parse ? trydate : null;
+                return tryDate ? tryDate : null;
             },
     doImport(fns, into) {
             fns.forEach(fn => {
