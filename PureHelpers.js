@@ -21,6 +21,14 @@ const methods = {
                 .replace(/ {1,}>/g, '>')
                 .replace(/^\s|^\s+|\s$|\s+$/g, '');
             },
+    charAtIsUpperCase: (inputString, atpos) =>{
+                const chr = inputString.charAt(atpos);
+                return /[A-Z]|[\u0080-\u024F]/.test(chr) && chr === chr.toUpperCase();
+            },
+    charAtIsLowerCase: (inputString, atpos) =>{
+                const chr = inputString.charAt(atpos);
+                return /[A-Z]|[\u0080-\u024F]/.test(chr) && chr === chr.toLowerCase();
+            },
     truncateString: (string2Truncate, truncateAtPosition, truncateOnWholeWordsOnly) => {
                 if (truncateAtPosition >= string2Truncate.length) {
                     return string2Truncate;

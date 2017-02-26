@@ -84,6 +84,36 @@ Returns `String`
 --
 
 
+**Method** `charAtIsUpperCase`
+
+**Parameters** `inputString, atpos`
+
+**It** determines if the character at [`atPos`] within [`inputString`] is upper case
+
+
+returns `Boolean`
+
+
+
+
+--
+
+
+**Method** `charAtIsLowerCase`
+
+**Parameters** `inputString, atpos`
+
+**It** determines if the character at [`atPos`] within [`inputString`] is lower case
+
+
+returns `Boolean`
+
+
+
+
+--
+
+
 **Method** `truncateString`
 
 **Parameters** `string2Truncate, truncateAtPosition, truncateOnWholeWordsOnly`
