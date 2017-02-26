@@ -94,7 +94,8 @@ Returns `String`
 Example
 
 ```javascript
-"some\n\n\nstring".split(/\n/]);   //=> ["some", "", "", "string"]
+
+"some\n\n\nstring".split(/\n/]);         //=> ["some", "", "", "string"]
 splitAndClean("some\n\n\nstring", /\n/); //=> ["some", "string"]
 ```
 
