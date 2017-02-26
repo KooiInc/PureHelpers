@@ -182,8 +182,9 @@ Returns `Boolean`
 
 
 ```javascript
-hash2Object("Country=Netherlands&Lang=NL&min=10&max=89");
-//=> {Country: "Netherlands", Lang: "NL", min: 10, max: 89}
+
+hash2Object("Country=Netherlands&Lang=NL&min=10&max=89"); //=> {Country: "Netherlands", Lang: "NL", min: 10, max: 89}
+
 ```
 
 Returns `Object`
