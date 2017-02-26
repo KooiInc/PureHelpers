@@ -24,6 +24,7 @@ Note: a non existing method will translate to a method returning an error string
 ##Current methods available##
 
 **Method** `randomString`
+
 **Parameters** `prefix = "", minRandomNumberValue = 10000, maxRandomNumberValue = 10000000`
 
 **It** creates a random (hex) number string, possibly preceded with a prefix
@@ -35,6 +36,7 @@ Returns `String`
 
 
 **Method** `repeatString`
+
 **Parameters** `string2Repeat, n2Repeat`
 
 **It** returns a `String` where [`string2Repeat`] is repeated [`n2Repeat`] times
@@ -45,6 +47,7 @@ Returns `String`
 
 
 **Method** `checkPostcode`
+
 **Parameters** `postcodeStringCandidate`
 
 **It** checks a dutch postal code to be valid
@@ -56,6 +59,7 @@ Returns `Boolean`
 
 
 **Method** `cleanupWhitespace`
+
 **Parameters** `string2Cleanup`
 
 **It** removes *all* extra whitespace from [`string2Cleanup`] 
@@ -76,6 +80,7 @@ Returns `String`
 
 
 **Method** `truncateString`
+
 **Parameters** `string2Truncate, truncateAtPosition, truncateOnWholeWordsOnly`
 
 **It** truncates [`string2Truncate`] @ position [`truncateAtPosition`] 
@@ -96,6 +101,7 @@ Returns `String`
 
 
 **Method** `splitAndClean`
+
 **Parameters** `string2Split, splitter`
 
 **It** splits [`string2Split`] using [`splitter`] and removes empty values from the resulting `Array`
@@ -117,6 +123,7 @@ Returns `Array`
 
 
 **Method** `numberBetween`
+
 **Parameters** `number, min, max`
 
 **It** determines if [`number`] falls between [`min`] and [`max`]
@@ -136,6 +143,7 @@ Returns `Boolean`
 
 
 **Method** `padLeft`
+
 **Parameters** `number, base = 10, char = "0"`
 
 **It** left-pads a [`number`] with [`base`] - [`number`].length [`char`] 
@@ -156,6 +164,7 @@ Returns `String`
 
 
 **Method** `interpolate`
+
 **Parameters** `string2Interpolate, tokens`
 
 **It** is a string templating method, using {[someproperty]} in string and a token object to replace [someproperty]
@@ -186,6 +195,7 @@ Returns `String`
 
 
 **Method** `tryParseDate`
+
 **Parameters** `dateStringCandidateValue, format = "dmy"`
 
 **It** tries to parse string [`dateStringCandidateValue`] into a Date instance using [`format`] 
