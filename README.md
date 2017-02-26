@@ -54,8 +54,6 @@ Returns `String`
 **It** checks a dutch postal code to be valid
 
 
-See it [in action](http://jsfiddle.net/KooiInc/g5rg3rxn/embedded/result,js,html,css/)
-
 Returns `Boolean`
 
 
@@ -135,8 +133,10 @@ Returns `Array`
 
 **Parameters** `number`
 
-**It** determines if [`number`] is a prime number
+**It** determines (fast) if [`number`] is a prime number
 
+
+See it [in action](http://jsfiddle.net/KooiInc/g5rg3rxn/embedded/result,js,html,css/)
 
 Returns `Boolean`
 
