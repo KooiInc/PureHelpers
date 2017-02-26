@@ -34,6 +34,13 @@ const methods = {
                 return string2Split.split(splitter)
                 .map( e => e && String(e).trim().length);
             },
+    isPrime: (number) => {
+                let start = 2;
+                while (start <= Math.sqrt(number)) {
+                    if (number % start++ < 1) return false;
+                }
+                return number > 1;
+            },
     numberBetween: (number, min, max) => {
                 return number > min && number < max;
             },
