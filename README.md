@@ -23,7 +23,8 @@ Note: a non existing method will translate to a method returning an error string
 
 ##Current methods available##
 
-**Method** `randomString (prefix = "", minRandomNumberValue = 10000, maxRandomNumberValue = 10000000)`
+**Method** `randomString`
+**Parameters** `prefix = "", minRandomNumberValue = 10000, maxRandomNumberValue = 10000000`
 
 **It** creates a random (hex) number string, possibly preceded with a prefix
 
@@ -32,7 +33,8 @@ Returns `String`
 --
 
 
-**Method** `repeatString (string2Repeat, n2Repeat)`
+**Method** `repeatString`
+**Parameters** `string2Repeat, n2Repeat`
 
 **It** returns a `String` where [`string2Repeat`] is repeated [`n2Repeat`] times
 
@@ -40,7 +42,8 @@ Returns `String`
 --
 
 
-**Method** `checkPostcode (postcodeStringCandidate)`
+**Method** `checkPostcode`
+**Parameters** `postcodeStringCandidate`
 
 **It** checks a dutch postal code to be valid
 
@@ -49,7 +52,8 @@ Returns `Boolean`
 --
 
 
-**Method** `cleanupWhitespace string2Cleanup`
+**Method** `cleanupWhitespace`
+**Parameters** `string2Cleanup`
 
 **It** removes *all* extra whitespace from [`string2Cleanup`] 
 
@@ -67,7 +71,8 @@ Returns `String`
 --
 
 
-**Method** `truncateString (string2Truncate, truncateAtPosition, truncateOnWholeWordsOnly)`
+**Method** `truncateString`
+**Parameters** `string2Truncate, truncateAtPosition, truncateOnWholeWordsOnly`
 
 **It** truncates [`string2Truncate`] @ position [`truncateAtPosition`] 
 
@@ -76,8 +81,7 @@ if [`truncateOnWholeWordsOnly`] is true, `string2Truncate` will be truncated rig
 Examples
 
 ```javascript
-
-truncateString("this is too long", 10);       //=> this is to...
+truncateString("this is too long", 10); //=> this is to...
 truncateString("this is too long", 10, true); //=> this is...
 ```
 
@@ -86,7 +90,8 @@ Returns `String`
 --
 
 
-**Method** `splitAndClean (string2Split, splitter)`
+**Method** `splitAndClean`
+**Parameters** `string2Split, splitter`
 
 **It** splits [`string2Split`] using [`splitter`] and removes empty values from the resulting `Array`
 
@@ -95,6 +100,9 @@ Returns `String`
 Example
 
 ```javascript
+
+
+
 
 "some\n\n\nstring".split(/\n/]);         //=> ["some", "", "", "string"]
 splitAndClean("some\n\n\nstring", /\n/); //=> ["some", "string"]
@@ -105,7 +113,8 @@ Returns `Array`
 --
 
 
-**Method** `numberBetween (number, min, max)`
+**Method** `numberBetween`
+**Parameters** `number, min, max`
 
 **It** determines if [`number`] falls between [`min`] and [`max`]
 
@@ -122,7 +131,8 @@ Returns `Boolean`
 --
 
 
-**Method** `padLeft (number, base = 10, char = "0")`
+**Method** `padLeft`
+**Parameters** `number, base = 10, char = "0"`
 
 **It** left-pads a [`number`] with [`base`] - [`number`].length [`char`] 
 
@@ -140,7 +150,8 @@ Returns `String`
 --
 
 
-**Method** `interpolate (string2Interpolate, tokens)`
+**Method** `interpolate`
+**Parameters** `string2Interpolate, tokens`
 
 **It** is a string templating method, using {[someproperty]} in string and a token object to replace [someproperty]
 
@@ -168,7 +179,8 @@ Returns `String`
 --
 
 
-**Method** `tryParseDate (dateStringCandidateValue, format = "dmy")`
+**Method** `tryParseDate`
+**Parameters** `dateStringCandidateValue, format = "dmy"`
 
 **It** tries to parse string [`dateStringCandidateValue`] into a Date instance using [`format`] 
 
