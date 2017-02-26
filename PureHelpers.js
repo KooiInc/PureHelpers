@@ -103,7 +103,7 @@ const methods = {
                 var fullYear = trydate && trydate.getFullYear();
                 return fullYear && fullYear >= minYear2Parse && fullYear <= maxYear2Parse ? trydate : null;
             },
-    importA(fns, into) {
+    doImport(fns, into) {
             fns.forEach(fn => {
                 fn = fn.trim();
                 if (this[fn]) {
@@ -119,7 +119,7 @@ const methods = {
             methods2Import = methods2Import instanceof Object && !methods2Import.length
                 ? Object.keys(methods2Import)
                 : methods2Import;
-            return this.importA(methods2Import, intoNamespace);
+            return this.doImport(methods2Import, intoNamespace);
         },
 };
 module.exports = { import: methods.import.bind(methods) };
