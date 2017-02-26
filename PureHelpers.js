@@ -58,6 +58,7 @@ const methods = {
                             return pre;
                         }, {});
             },
+    uniqueValuesFromArray: inputArray => inputArray.filter(a => !this[a] ? this[a] = true : false, {}),
     numberBetween: (number, min, max) => {
                 return number > min && number < max;
             },

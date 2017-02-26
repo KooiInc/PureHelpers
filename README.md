@@ -194,6 +194,26 @@ Returns `Object`
 --
 
 
+**Method** `uniqueValuesFromArray`
+
+**Parameters** `inputArray`
+
+**It** retrieves unique values from [`inputArray`]
+
+
+```javascript
+uniqueValuesFromArray([1, 2, 2, 3, 2, 3, 23, 5, 6, 5, "la", "la", "la"]); //=> [ 1, 2, 3, 23, 5, 6, 'la' ]
+uniqueValuesFromArray([1, 2, 1, 2, 1, 2]); //=> [1, 2]
+``` 
+
+returns `Array`
+
+
+
+
+--
+
+
 **Method** `numberBetween`
 
 **Parameters** `number, min, max`
