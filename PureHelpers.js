@@ -41,6 +41,15 @@ const methods = {
                 }
                 return number > 1;
             },
+    hash2Object: (hashInput) => {
+                        return hashInput
+                        .split("&")
+                        .map(el => el.split("="))
+                        .reduce((pre, cur) => {
+                            pre[cur[0]] = cur[1];
+                            return pre;
+                        }, {});
+            },
     numberBetween: (number, min, max) => {
                 return number > min && number < max;
             },

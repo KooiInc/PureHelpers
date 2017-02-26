@@ -144,6 +144,24 @@ Returns `Boolean`
 --
 
 
+**Method** `hash2Object`
+
+**Parameters** `hashInput`
+
+**It** deserializes a (url) hash string to a key-value pair collection
+
+
+```javascript
+hash2Object("Country=Netherlands&Lang=NL&min=10&max=89");
+//=> {Country: "Netherlands", Lang: "NL", min: 10, max: 89}
+``` 
+
+
+
+
+--
+
+
 **Method** `numberBetween`
 
 **Parameters** `number, min, max`
