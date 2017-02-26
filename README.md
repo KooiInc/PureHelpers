@@ -202,8 +202,9 @@ Returns `Object`
 
 
 ```javascript
-uniqueValuesFromArray([1, 2, 2, 3, 2, 3, 23, 5, 6, 5, "la", "la", "la"]); //=> [ 1, 2, 3, 23, 5, 6, 'la' ]
-uniqueValuesFromArray([1, 2, 1, 2, 1, 2]); //=> [1, 2]
+
+uniqueValuesFromArray([1, 2, 2, 3, "la", 2, 3, 23, 5, 6, 5, "la"]); //=> [ 1, 2, 3, 'la', 23, 5, 6 ]
+uniqueValuesFromArray([1, 2, 1, 2, 1, 2]);                          //=> [ 1, 2 ]
 ``` 
 
 returns `Array`
