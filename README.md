@@ -148,13 +148,15 @@ Returns `Boolean`
 
 **Parameters** `hashInput`
 
-**It** deserializes a (url) hash string to a key-value pair collection
+**It** deserializes a (url) hash string [`hashInput`] to a key-value pair collection
 
 
 ```javascript
 hash2Object("Country=Netherlands&Lang=NL&min=10&max=89");
 //=> {Country: "Netherlands", Lang: "NL", min: 10, max: 89}
-``` 
+```
+
+Returns `Object`
 
 
 
