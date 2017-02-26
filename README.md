@@ -82,7 +82,25 @@ truncateString("this is too long", 10, true); //=> this is...
 
 Returns `String`
 
+--
 
+
+**Method** `splitAndClean (string2Split, splitter)`
+
+**It** splits [`string2Split`] using [`splitter`] and removes empty values from the resulting `Array`
+
+`splitter` can be a string value or a regular expression 
+
+Example
+
+```javascript
+"some\n\n\nstring".split(/
+/]);   //=> ["some", "", "", "string"]
+splitAndClean("some
+string", /\n/); //=> ["some", "string"]
+```
+
+Returns `Array`
 
 --
 

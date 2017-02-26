@@ -15,8 +15,8 @@ const methods = {
             },
     cleanupWhitespace: string2Cleanup => {
                 return string2Cleanup
-                .replace(/\n|\r|\n/g, '')
-                .replace(/\s+\b/g, ' ')
+                .replace(/\n|\r|\r\n/g, '')
+                .replace(/\s+\B/g, ' ')
                 .replace(/(>\s+<)/g, '><')
                 .replace(/ {1,}>/g, '>')
                 .replace(/^\s|^\s+|\s$|\s+$/g, '');
@@ -29,6 +29,10 @@ const methods = {
                 return (truncateOnWholeWordsOnly && /[a-z]/gi.test(string2Truncate.substr(truncateAtPosition, 1)) ?
                         truncatedRaw.slice(0, truncatedRaw.lastIndexOf(' ')) :
                         truncatedRaw) + '\u2026';
+            },
+    splitAndClean: (string2Split, splitter) => {
+                return string2Split.split(splitter)
+                .map( e => e && String(e).trim().length);
             },
     numberBetween: (number, min, max) => {
                 return number > min && number < max;
@@ -43,8 +47,6 @@ const methods = {
                 } else if (!(tokens instanceof Object)) {
                     return string2Interpolate;
                 }
-
-                // empty strings temporary become String.fromCharCode(0)
                 let replacer = token => (t, t1, t2) => token[t2] === '' ? String.fromCharCode(0) : token[t2] || t;
                 let str = string2Interpolate;
                 return tokens.map(function (token) {
@@ -52,7 +54,6 @@ const methods = {
                 })
                 .join('')
                 .replace(RegExp(String.fromCharCode(0), "g"), '');
-                // String.fromCharCode(0) back to empty string
             },
     tryParseDate: (dateStringCandidateValue, format = "dmy") => {
                 if (!dateStringCandidateValue) {
@@ -96,4 +97,4 @@ const methods = {
             return this.importA(methods2Import, intoNamespace);
         },
 };
-module.exports = { import: methods.import.bind(methods) }
+module.exports = { import: methods.import.bind(methods) };
