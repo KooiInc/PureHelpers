@@ -76,7 +76,8 @@ if [`truncateOnWholeWordsOnly`] is true, `string2Truncate` will be truncated rig
 Examples
 
 ```javascript
-truncateString("this is too long", 10); //=> this is to...
+
+truncateString("this is too long", 10);       //=> this is to...
 truncateString("this is too long", 10, true); //=> this is...
 ```
 
