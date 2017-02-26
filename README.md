@@ -71,9 +71,9 @@ Example
 
 ```javascript
 cleanupWhitespace(`  
-     free me of all      that
-     whitespace here     
-               `); //=> "free me of all that whitespace here"
+      free me of all      that
+      whitespace here     
+                `); //=> "free me of all that whitespace here"
 ```
 
 Returns `String`
@@ -103,7 +103,7 @@ returns `Boolean`
 
 **Parameters** `inputString, atpos`
 
-**It** determines if the character at [`atPos`] within [`inputString`] is lower case
+**It** determines if the character at [`atPos`] (zero based) within [`inputString`] is lower case
 
 
 returns `Boolean`
@@ -184,7 +184,7 @@ Returns `Boolean`
 ```javascript
 
 hash2Object("Country=Netherlands&Lang=NL&min=10&max=89"); 
-   //=> {Country: "Netherlands", Lang: "NL", min: 10, max: 89}
+    //=> {Country: "Netherlands", Lang: "NL", min: 10, max: 89}
 
 ```
 
