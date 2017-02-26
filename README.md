@@ -54,6 +54,8 @@ Returns `String`
 **It** checks a dutch postal code to be valid
 
 
+See it [in action](http://jsfiddle.net/KooiInc/g5rg3rxn/embedded/result,js,html,css/)
+
 Returns `Boolean`
 
 
@@ -118,7 +120,6 @@ Returns `String`
 Example
 
 ```javascript
-
 
 "some\n\n\nstring".split(/\n/]);         //=> ["some", "", "", "string"]
 splitAndClean("some\n\n\nstring", /\n/); //=> ["some", "string"]
