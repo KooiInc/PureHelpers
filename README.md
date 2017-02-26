@@ -94,10 +94,8 @@ Returns `String`
 Example
 
 ```javascript
-"some\n\n\nstring".split(/
-/]);   //=> ["some", "", "", "string"]
-splitAndClean("some
-string", /\n/); //=> ["some", "string"]
+"some\n\n\nstring".split(/\n/]);   //=> ["some", "", "", "string"]
+splitAndClean("some\n\n\nstring", /\n/); //=> ["some", "string"]
 ```
 
 Returns `Array`
