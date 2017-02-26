@@ -68,8 +68,8 @@ Example
 
 ```javascript
 cleanupWhitespace(`  
-free me of all      that
-whitespace here     
+&nbsp;    free me of all      that
+&nbsp;    whitespace here     
 `); //=> "free me of all that whitespace here"
 ```
 
