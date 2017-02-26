@@ -30,7 +30,6 @@ Note: a non existing method will translate to a method returning an error string
 **It** creates a random (hex) number string, possibly preceded with a prefix
 
 Returns `String`
-
 --
 
 
@@ -40,7 +39,6 @@ Returns `String`
 **Parameters** `string2Repeat, n2Repeat`
 
 **It** returns a `String` where [`string2Repeat`] is repeated [`n2Repeat`] times
-
 
 --
 
@@ -53,7 +51,6 @@ Returns `String`
 **It** checks a dutch postal code to be valid
 
 Returns `Boolean`
-
 --
 
 
@@ -72,7 +69,6 @@ whitespace here     `); //=> "free me of all that whitespace here"
 ```
 
 Returns `String`
-
 
 
 --
@@ -95,7 +91,6 @@ truncateString("this is too long", 10, true); //=> this is...
 ```
 
 Returns `String`
-
 --
 
 
@@ -117,7 +112,6 @@ splitAndClean("some\n\n\nstring", /\n/); //=> ["some", "string"]
 ```
 
 Returns `Array`
-
 --
 
 
@@ -137,7 +131,6 @@ numberBetween(num, 16, 20); //=> false
 ```
 
 Returns `Boolean`
-
 --
 
 
@@ -156,7 +149,6 @@ padLeft(15, 1000);      //-> "0015"
 ```
 
 Returns `String`
-
 
 
 --
@@ -189,7 +181,6 @@ Example usage:
 ```
 
 Returns `String`
-
 --
 
 
@@ -209,5 +200,4 @@ tryParseDate("07/02/2015", "mdy"); //-> (Date)2015-07-01
 ```
 
 Returns a `Date` instance or `null` if parsing fails
-
 --
