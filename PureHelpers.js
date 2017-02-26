@@ -9,7 +9,7 @@ const methods = {
     repeatString: (string2Repeat, n2Repeat) => {
                 return Array(n2Repeat).join(string2Repeat);
             },
-    checkPostcode: (postcodeStringCandidate) => {
+    checkPostcode: postcodeStringCandidate => {
                 postcodeStringCandidate = postcodeStringCandidate.replace(/\s+/g, '');
                 return /^(\d{4,4}[a-z]{2,2})$/i.test(postcodeStringCandidate);
             },
@@ -42,14 +42,14 @@ const methods = {
                 return string2Split.split(splitter)
                 .map( e => e && String(e).trim().length);
             },
-    isPrime: (number) => {
+    isPrime: number => {
                 let start = 2;
                 while (start <= Math.sqrt(number)) {
                     if (number % start++ < 1) return false;
                 }
                 return number > 1;
             },
-    hash2Object: (hashInput) => {
+    hash2Object: hashInput => {
                         return hashInput
                         .split("&")
                         .map(el => el.split("="))
@@ -64,7 +64,7 @@ const methods = {
             },
     padLeft: (number, base = 10, char = "0") => {
                 const len = (String(base).length - String(number).length) + 1;
-                return len > 0 ? new Array(len).join('0') + number : number;
+                return len > 0 ? new Array(len).join(char) + number : number;
             },
     interpolate: (string2Interpolate, tokens) => {
                 if (!(tokens instanceof Array) && tokens instanceof Object) {
