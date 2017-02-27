@@ -21,10 +21,6 @@ if (args.length > 0) {
     process.exit(0);
 }
 
-// region main
-BuildAll({readme: 1, export: 0});
-// endregion main
-
 // region methods
 function getMethods() {
     return {
