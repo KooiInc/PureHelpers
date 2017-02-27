@@ -1,4 +1,25 @@
 "use strict";
+const args = process.argv.slice(2);
+if (args.length > 0) {
+    let buildArgs = null;
+    switch (args[0].toLowerCase()) {
+        case "test":
+            buildArgs = {readme: 0, export: 0}; break;
+        case "export":
+            buildArgs = {readme: 0, export: 1}; break;
+        case "readme":
+            buildArgs = {readme: 1, export: 0}; break;
+        case "all":
+            buildArgs = {readme: 1, export: 1}; break;
+    }
+
+    if (!buildArgs) {
+        console.log("no valid arguments");
+    } else {
+        BuildAll(buildArgs);
+    }
+    process.exit(0);
+}
 
 // region main
 BuildAll({readme: 1, export: 0});
@@ -472,9 +493,11 @@ function BuildAll(what2Build) {
             return;
         }
         if (what2Build.export) {
+            console.log("\nExporting to file ...");
             exportToHelpers();
         }
         if (what2Build.readme) {
+            console.log("\nCreating README ...");
             CreateREADME().stringify2Readme();
         }
     }
