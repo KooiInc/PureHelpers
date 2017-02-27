@@ -21,6 +21,16 @@ numberBetween(15, 5, 20); //-> true
 
 Note: a non existing method will translate to a method returning an error string
 
+
+##Build.js Usage##
+
+
+Build js contains:
+
+ - Tests for all methods
+ - A method to export only the methods to PureHelpers.js (the entry point of this library)
+ - A method to create a README.md from the description property in each method object
+
 #Available methods #
 **Method** `randomString`
 
