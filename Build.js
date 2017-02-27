@@ -1,16 +1,8 @@
 "use strict";
+
 // region main
 const debug = false;
-if (testAll().failed > 0) {
-    console.log("One or more tests failed, fix it first!");
-}
-else if (!debug) {
-    exportToHelpers();
-    CreateREADME().stringify2Readme();
-} else {
-    console.log("debug true, no build");
-}
-
+BuildAll({readme: 1, export: 1});
 // endregion main
 
 // region methods
@@ -28,7 +20,7 @@ function getMethods() {
             tests() {
                 Tester.Test(
                     `randomString("HELLO")`,
-                    () => this.method("HELLO"), val => val.startsWith("HELLO").valueOf(),
+                    () => this.method("HELLO"), val => val.startsWith("HELLO"),
                     "Should start with HELLO");
             }
         },
@@ -443,7 +435,12 @@ function getHeaderLines() {
         "Now within your library file you can call\n",
         str2JsExample("numberBetween(15, 5, 20); //-> true"),
         "\nNote: a non existing method will translate to a method returning an error string\n",
-        "#Available methods #\n"
+        "\n##Build.js Usage##\n",
+        "\nBuild js contains:\n",
+        " - Tests for all methods",
+        " - A method to export only the methods to PureHelpers.js (the entry point of this library)",
+        " - A method to create a README.md from the description property in each method object",
+        "\n#Available methods #\n"
     ].join("\n");
 }
 
@@ -465,6 +462,25 @@ function cleanup(description, method) {
     };
 }
 // endregion API2Readme
+
+// region Build
+function BuildAll(what2Build) {
+    const tests = testAll();
+
+    if (what2Build.export || what2Build.readme) {
+        if (tests.failed > 0) {
+            console.log(`CAN NOT BUILD, you should fix ${tests.failed} test(s) first`);
+            return;
+        }
+        if (what2Build.export) {
+            exportToHelpers();
+        }
+        if (what2Build.readme) {
+            CreateREADME().stringify2Readme();
+        }
+    }
+}
+// endregion Build
 
 // region Tests
 function testAll() {
