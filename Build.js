@@ -440,7 +440,7 @@ function getHeaderLines() {
         " - Tests for all methods",
         " - A method to export only the methods to PureHelpers.js (the entry point of this library)",
         " - A method to create a README.md from the description property in each method object",
-        "\nUse `BuildAll({export: [0/1], readme: [0/1])` to test and build the files\n",
+        "\nUse `BuildAll({export: [0/1], readme: [0/1]})` to test and build the files\n",
         "\n#Available methods #\n"
     ].join("\n");
 }
