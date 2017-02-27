@@ -133,7 +133,7 @@ function getMethods() {
                 splits [\`string2Split\`] using [\`splitter\`] and removes empty values from the resulting \`Array\`
                  \`splitter\` can be a string value or a regular expression 
                 Example
-                <ex>some\\n\\n\\nstring".split(/\\n/);           //=> ["some", "", "", "string"]
+                <ex>"some\\n\\n\\nstring".split(/\\n/);          //=> ["some", "", "", "string"]
                 splitAndClean("some\\n\\n\\nstring", /\\n/); //=> ["some", "string"]</ex>
                 Returns \`Array\``
         },
