@@ -439,14 +439,17 @@ function getHeaderLines() {
         "Importable pure ES helper methods",
         "",
         "##Usage",
+        "Download files to your computer. ",
+        "Within the download directory, open a cmd window and start `npm install`",
+        "\n\nNow the file `PureHelpers.js` is the main file to use. For example:\n",
         str2JsExample(
-            "const helpers = require(\"./PureHelpers\").import(\"randomString, numberBetween\".split(\",\"), {});\n" +
+            "const helpers = require(\"[path.to]PureHelpers\").import(\"randomString, numberBetween\".split(\",\"), {});\n" +
             "helpers.randomString();\n" +
             "Number.prototype.between = function (min, max) { return helpers.numberBetween(this, min, max); }\n" +
             "// etc."),
         "If you want to import methods in the *current* namespace directly, use",
         "",
-        str2JsExample("[lib].import({numberBetween: 1, truncateString: 1}, function() { return this; }())"),
+        str2JsExample("[yourAlreadyRequiredPureHelperLib].import({numberBetween: 1, truncateString: 1}, function() { return this; }())"),
         "Now within your library file you can call\n",
         str2JsExample("numberBetween(15, 5, 20); //-> true"),
         "\nNote: a non existing method will translate to a method returning an error string\n",
@@ -455,7 +458,7 @@ function getHeaderLines() {
         " - Tests for all methods",
         " - A method to export only the methods to PureHelpers.js (the entry point of this library)",
         " - A method to create a README.md from the description property in each method object",
-        "\nUse `BuildAll({export: [0/1], readme: [0/1]})` to test and build the files\n",
+        "\nUse `node build test` to test and `node build all` to (re)build the files\n",
         "\n#Available methods #\n"
     ].join("\n");
 }

@@ -2,8 +2,14 @@
 Importable pure ES helper methods
 
 ##Usage
+Download files to your computer. 
+Within the download directory, open a cmd window and start `npm install`
+
+
+Now the file `PureHelpers.js` is the main file to use. For example:
+
 ```javascript
-const helpers = require("./PureHelpers").import("randomString, numberBetween".split(","), {});
+const helpers = require("[path.to]PureHelpers").import("randomString, numberBetween".split(","), {});
 helpers.randomString();
 Number.prototype.between = function (min, max) { return helpers.numberBetween(this, min, max); }
 // etc.
@@ -11,7 +17,7 @@ Number.prototype.between = function (min, max) { return helpers.numberBetween(th
 If you want to import methods in the *current* namespace directly, use
 
 ```javascript
-[lib].import({numberBetween: 1, truncateString: 1}, function() { return this; }())
+[yourAlreadyRequiredPureHelperLib].import({numberBetween: 1, truncateString: 1}, function() { return this; }())
 ```
 Now within your library file you can call
 
@@ -31,7 +37,7 @@ Build.js contains:
  - A method to export only the methods to PureHelpers.js (the entry point of this library)
  - A method to create a README.md from the description property in each method object
 
-Use `BuildAll({export: [0/1], readme: [0/1]})` to test and build the files
+Use `node build test` to test and `node build all` to (re)build the files
 
 
 #Available methods #
