@@ -25,11 +25,14 @@ Note: a non existing method will translate to a method returning an error string
 ##Build.js Usage##
 
 
-Build js contains:
+Build.js contains:
 
  - Tests for all methods
  - A method to export only the methods to PureHelpers.js (the entry point of this library)
  - A method to create a README.md from the description property in each method object
+
+Use `BuildAll({export: [0/1], readme: [0/1])` to test and build the files
+
 
 #Available methods #
 **Method** `randomString`
@@ -158,6 +161,9 @@ Returns `String`
 Example
 
 ```javascript
+
+
+
 
 "some\n\n\nstring".split(/\n/]);         //=> ["some", "", "", "string"]
 splitAndClean("some\n\n\nstring", /\n/); //=> ["some", "string"]

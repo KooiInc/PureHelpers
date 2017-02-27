@@ -436,10 +436,11 @@ function getHeaderLines() {
         str2JsExample("numberBetween(15, 5, 20); //-> true"),
         "\nNote: a non existing method will translate to a method returning an error string\n",
         "\n##Build.js Usage##\n",
-        "\nBuild js contains:\n",
+        "\nBuild.js contains:\n",
         " - Tests for all methods",
         " - A method to export only the methods to PureHelpers.js (the entry point of this library)",
         " - A method to create a README.md from the description property in each method object",
+        "\nUse `BuildAll({export: [0/1], readme: [0/1])` to test and build the files\n",
         "\n#Available methods #\n"
     ].join("\n");
 }
