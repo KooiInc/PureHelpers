@@ -1,8 +1,7 @@
 "use strict";
 
 // region main
-const debug = false;
-BuildAll({readme: 1, export: 1});
+BuildAll({readme: 1, export: 0});
 // endregion main
 
 // region methods
@@ -120,14 +119,6 @@ function getMethods() {
         },
         splitAndClean: {
             method: (string2Split, splitter) => string2Split.split(splitter).filter( e => e && String(e).trim().length),
-            description: `
-                splits [\`string2Split\`] using [\`splitter\`] and removes empty values from the resulting \`Array\`
-                 \`splitter\` can be a string value or a regular expression 
-                Example
-                <ex>
-                "some\\n\\n\\nstring".split(/\\n/]);         //=> ["some", "", "", "string"]
-                splitAndClean("some\\n\\n\\nstring", /\\n/); //=> ["some", "string"]</ex>
-                Returns \`Array\``,
             tests() {
                 Tester.Test(
                     `splitAndClean("some\\n\\n\\nstring", /\\n/)`,
@@ -137,7 +128,14 @@ function getMethods() {
                     `splitAndClean("some string   some", "")`,
                     () => this.method("some string   some", "").join(""),
                     "somestringsome");
-            }
+            },
+            description: `
+                splits [\`string2Split\`] using [\`splitter\`] and removes empty values from the resulting \`Array\`
+                 \`splitter\` can be a string value or a regular expression 
+                Example
+                <ex>some\\n\\n\\nstring".split(/\\n/);           //=> ["some", "", "", "string"]
+                splitAndClean("some\\n\\n\\nstring", /\\n/); //=> ["some", "string"]</ex>
+                Returns \`Array\``
         },
         isPrime: {
             method: number => {
