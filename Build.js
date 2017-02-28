@@ -49,17 +49,32 @@ function getMethods() {
                 Tester.Test(`repeatString("anyway", 2)`, () => this.method("anyway", 2), "anywayanyway");
             }
         },
-        checkPostcode: {
-            method: postcodeStringCandidate => {
-                postcodeStringCandidate = postcodeStringCandidate.replace(/\s+/g, '');
-                return /^(\d{4,4}[a-z]{2,2})$/i.test(postcodeStringCandidate);
+        checkPostalCode: {
+            method: (postcodeStringCandidate, postalCodeFormat = "nnnnaa") => {
+                postcodeStringCandidate = postcodeStringCandidate.replace(/\s+|\-+/g, '');
+                const formatRE = new RegExp(
+                    "^(" +
+                    postalCodeFormat.toLowerCase().split("").map(el => el === "n" ? "\\d" : "[a-z]").join("") +
+                    ")$", "i");
+                return formatRE.test(postcodeStringCandidate);
             },
             description: `
-                checks a dutch postal code to be valid
+                checks a postal code to be valid
+                Postal code should consist of numbers and or alphanumeric characters (like '123 ZX')
+                [\`postcodeStringCandidate\`] can contain spaces or hyphens 
+                [\`postalCodeFormat\`] is a string where \`n\` signifies a number, and \`a\` an alphanumeric character.
+                Default is \`"nnnnaa"\`  (dutch postal code format)
+                Example
+                <ex>checkPostalCode('9822 AA');             //=> true
+                checkPostoalCode('982234 N');           //=> false
+                checkPostalCode('982234-N', 'nnnnnna'); //=> true</ex>
                 Returns \`Boolean\``,
             tests() {
-                Tester.Test("checkPostcode '9822 AA'", () => this.method("9822 AA"), true, "should be ok" );
-                Tester.Test("checkPostcode '982234 N'", () => this.method("982234 N", 3), false, "should be false");
+                Tester.Test("checkPostalCode('9822 AA')", () => this.method("9822 AA"), true, "should be ok" );
+                Tester.Test("checkPostoalCode('982234 N')", () => this.method("982234 N"), false, "should be false");
+                Tester.Test("checkPostalCode('982234-N', 'nnnnnna')", () => this.method("982234-N", "nnnnnna"), true, "should be true");
+                Tester.Test("checkPostalCode('982234-N', 'nannnna')", () => this.method("982234-N", "nannnna"), false, "should be false");
+                Tester.Test("checkPostalCode('98 Z-12B', 'nnanna')", () => this.method("98 Z-12B", "nnanna"), true, "should be true");
             }
         },
         cleanupWhitespace: {
@@ -535,6 +550,7 @@ function TestSimple() {
                 : 'FAIL (observed [' + val + '], expected: [' + 
                   (expectedIsMethod ? expectedValue(val) : expectedValue) + '])'}`);
     };
+
     return {
         get nFailed() {return nFailed;},
         get nSuccess() {return nSuccess;},

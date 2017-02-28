@@ -71,12 +71,28 @@ Returns `String`
 --
 
 
-**Method** `checkPostcode`
+**Method** `checkPostalCode`
 
-**Parameters** `postcodeStringCandidate`
+**Parameters** `postcodeStringCandidate, postalCodeFormat = "nnnnaa"`
 
-**It** checks a dutch postal code to be valid
+**It** checks a postal code to be valid
 
+
+Postal code should consist of numbers and or alphanumeric characters (like '123 ZX')
+
+[`postcodeStringCandidate`] can contain spaces or hyphens 
+
+[`postalCodeFormat`] is a string where `n` signifies a number, and `a` an alphanumeric character.
+
+Default is `"nnnnaa"`  (dutch postal code format)
+
+Example
+
+```javascript
+checkPostalCode('9822 AA');             //=> true
+checkPostoalCode('982234 N');           //=> false
+checkPostalCode('982234-N', 'nnnnnna'); //=> true
+```
 
 Returns `Boolean`
 
