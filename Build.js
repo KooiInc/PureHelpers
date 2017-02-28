@@ -41,35 +41,35 @@ function getMethods() {
             }
         },
         getUniqueRandomValues: {
-        method:(nValues, maxRandomValue) => {
-            let existing = {};
-            maxRandomValue -= 1;
-            const randomUnique = () => {
-                const rndm = Math.floor(1 + Math.random() * maxRandomValue);
-                const exists = existing[rndm];
-                if ( !exists ) { existing[rndm] = 1; }
-                return exists ? randomUnique() : rndm;
-            };
-            return Array(nValues).join(",").split(",")
-            .map( () => randomUnique() ) ;
-        },
+            method:(nValues, maxRandomValue) => {
+                let existing = {};
+                maxRandomValue -= 1;
+                const randomUnique = () => {
+                    const rndm = Math.floor(1 + Math.random() * maxRandomValue);
+                    const exists = existing[rndm];
+                    if ( !exists ) { existing[rndm] = 1; }
+                    return exists ? randomUnique() : rndm;
+                };
+                return Array(nValues).join(",").split(",")
+                .map( () => randomUnique() ) ;
+            },
             tests() {
-            Tester.Test(
-                `getUniqueRandomValues(10, 1000)`,
-                () => this.method(10, 1000),
-                val => val && val.filter( function(a) {return !this[a] ? this[a] = true : false;}, {} ).length === 10);
-            Tester.Test(
-                `getUniqueRandomValues(5, 100000)`,
-                () => this.method(5, 100000),
-                val => val && val.filter( function(a) {return !this[a] ? this[a] = true : false;}, {} ).length === 5);
-            Tester.Test(
-                    `getUniqueRandomValues(3, 25)`,
-                    () => this.method(3, 25),
-                    val => val && val.filter( function(a) {return !this[a] ? this[a] = true : false;}, {} ).length === 3);
-        },
-        description: `
-                 retrieves an \`Array\` of [\`nValues\`] unique (pseudo) random number values from 1 to [\`maxRandomValue\`]
-                 Returns \`Array\``,
+                Tester.Test(
+                    `getUniqueRandomValues(10, 1000)`,
+                    () => this.method(10, 1000),
+                    val => val && val.filter( function(a) {return !this[a] ? this[a] = true : false;}, {} ).length === 10);
+                Tester.Test(
+                    `getUniqueRandomValues(5, 100000)`,
+                    () => this.method(5, 100000),
+                    val => val && val.filter( function(a) {return !this[a] ? this[a] = true : false;}, {} ).length === 5);
+                Tester.Test(
+                        `getUniqueRandomValues(3, 25)`,
+                        () => this.method(3, 25),
+                        val => val && val.filter( function(a) {return !this[a] ? this[a] = true : false;}, {} ).length === 3);
+            },
+            description: `
+                     retrieves an \`Array\` of [\`nValues\`] unique (pseudo) random number values from 1 to [\`maxRandomValue\`]
+                     Returns \`Array\``,
         },
         repeatString: {
             description: `returns a \`String\` where [\`string2Repeat\`] is repeated [\`n2Repeat\`] times`,
