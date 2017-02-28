@@ -334,7 +334,7 @@ function getMethods() {
                     dateStr2Array.slice(3).forEach(t => datePartFormatted.push(+t));
                 }
                 const dateTrial = new Date(Date.UTC.apply(null, datePartFormatted));
-                return dateTrial.getFullYear() === datePartFormatted[0] &&
+                return dateTrial && dateTrial.getFullYear() === datePartFormatted[0] &&
                        dateTrial.getMonth() === datePartFormatted[1] &&
                        dateTrial.getDate() === datePartFormatted[2]
                         ? dateTrial :
