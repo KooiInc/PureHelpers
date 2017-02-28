@@ -1,9 +1,9 @@
 # PureHelpers
-Importable pure ES helper methods
+Importable mostly 'pure' ES helper methods.
 
 ##Usage
 Download files to your computer. 
-Within the download directory, open a cmd window and start `npm install`
+Within the download directory, open a cmd window and start `npm install`.
 
 
 Now the file `PureHelpers.js` is the main file to use. For example:
@@ -25,7 +25,7 @@ Now within your library file you can call
 numberBetween(15, 5, 20); //-> true
 ```
 
-Note: a non existing method will translate to a method returning an error string
+Note: a non existing method will translate to a method returning an error string.
 
 
 ##Build.js Usage##
@@ -37,10 +37,11 @@ Build.js contains:
  - A method to export only the methods to PureHelpers.js (the entry point of this library)
  - A method to create a README.md from the description property in each method object
 
-Use `node build test` to test, `node build export` to (re)build PureHelpers.js and `node build readme` to recreate README.md
+Use `node build test` to test, `node build createjs` to (re)build PureHelpers.js 
+,`node build readme` to (re)create README.md and `node build all` to do it all.
 
 
-**Note**: in all cases the tests are run first. If testing fails, rebuild/README.md will not be created
+**Note**: in all cases the tests are run first. If testing fails, rebuild/README.md will not be created.
 
 
 #Available methods #

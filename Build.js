@@ -4,13 +4,13 @@ if (args.length > 0) {
     let buildArgs = null;
     switch (args[0].toLowerCase()) {
         case "test":
-            buildArgs = {readme: 0, export: 0}; break;
-        case "export":
-            buildArgs = {readme: 0, export: 1}; break;
+            buildArgs = {test: 1}; break;
+        case "createjs":
+            buildArgs = {test: 1, createjs: 1}; break;
         case "readme":
-            buildArgs = {readme: 1, export: 0}; break;
+            buildArgs = {readme: 1}; break;
         case "all":
-            buildArgs = {readme: 1, export: 1}; break;
+            buildArgs = {readme: 1, test: 1, createjs: 1}; break;
     }
 
     if (!buildArgs) {
@@ -436,11 +436,11 @@ function str2JsExample(str) {
 
 function getHeaderLines() {
     return ["# PureHelpers",
-        "Importable pure ES helper methods",
+        "Importable mostly 'pure' ES helper methods.",
         "",
         "##Usage",
         "Download files to your computer. ",
-        "Within the download directory, open a cmd window and start `npm install`",
+        "Within the download directory, open a cmd window and start `npm install`.",
         "\n\nNow the file `PureHelpers.js` is the main file to use. For example:\n",
         str2JsExample(
             "const helpers = require(\"[path.to]PureHelpers\").import(\"randomString, numberBetween\".split(\",\"), {});\n" +
@@ -452,21 +452,22 @@ function getHeaderLines() {
         str2JsExample("[yourAlreadyRequiredPureHelperLib].import({numberBetween: 1, truncateString: 1}, function() { return this; }())"),
         "Now within your library file you can call\n",
         str2JsExample("numberBetween(15, 5, 20); //-> true"),
-        "\nNote: a non existing method will translate to a method returning an error string\n",
+        "\nNote: a non existing method will translate to a method returning an error string.\n",
         "\n##Build.js Usage##\n",
         "\nBuild.js contains:\n",
         " - Tests for all methods",
         " - A method to export only the methods to PureHelpers.js (the entry point of this library)",
         " - A method to create a README.md from the description property in each method object",
-        "\nUse `node build test` to test, `node build export` to (re)build PureHelpers.js and `node build readme` to recreate README.md\n",
-        "\n**Note**: in all cases the tests are run first. If testing fails, rebuild/README.md will not be created\n",
+        "\nUse `node build test` to test, `node build createjs` to (re)build PureHelpers.js ",
+        ",`node build readme` to (re)create README.md and `node build all` to do it all.\n",
+        "\n**Note**: in all cases the tests are run first. If testing fails, rebuild/README.md will not be created.\n",
         "\n#Available methods #\n"
     ].join("\n");
 }
 
 function cleanup(description, method) {
-    const FAT_ARROWS = /=>.*$/mg;
-    const code = method.toString().replace(FAT_ARROWS, '');
+    const fat_arrows = /=>.*$/mg;
+    const code = method.toString().replace(fat_arrows, '');
     description = description.replace(/^\s+/gm, "" );
     const docString = description.split(/\n/);
     const mLine = code.split(/\n/)[0].replace(/\n|\r|\r\n/g, '');
@@ -485,21 +486,19 @@ function cleanup(description, method) {
 
 // region Build
 function BuildAll(what2Build) {
-    const tests = testAll();
+    const tests = what2Build.test ? testAll() : {failed: 0};
 
-    if (what2Build.export || what2Build.readme) {
-        if (tests.failed > 0) {
-            console.log(`CAN NOT BUILD, you should fix ${tests.failed} test(s) first`);
-            return;
-        }
-        if (what2Build.export) {
-            console.log("\nExporting to file ...");
-            exportToHelpers();
-        }
-        if (what2Build.readme) {
-            console.log("\nCreating README ...");
-            CreateREADME().stringify2Readme();
-        }
+    if (tests.failed > 0) {
+        console.log(`CAN NOT BUILD, you should fix ${tests.failed} test(s) first`);
+        return;
+    }
+    if (what2Build.createjs) {
+        console.log("\nCreating (or recreating) PureHelpers.js ...");
+        exportToHelpers();
+    }
+    if (what2Build.readme) {
+        console.log("\nCreating (or recreating) README.md ...");
+        CreateREADME().stringify2Readme();
     }
 }
 // endregion Build

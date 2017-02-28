@@ -9,7 +9,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "node build test",
-    "install": "node build all"
+    "install": "node build createjs"
   },
   "repository": {
     "type": "git",
