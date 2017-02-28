@@ -59,7 +59,7 @@ function getMethods() {
             ),
             description: `
                 checks a postal (aka zip-) code [\`postcodeStringCandidate\`] to be valid vis a vis [\`postalCodeFormat\`]
-                Postal code should consist of numbers and or alphanumeric characters (like \`"123 ZX"\`)
+                Postal code should consist of numbers and/or alphanumeric characters (like \`"123 ZX"\`)
                 [\`postcodeStringCandidate\`] can contain spaces or hyphens.
                 [\`postalCodeFormat\`] is a string where \`n\` signifies a number, and \`a\` an alphanumeric character.
                 Default is \`"nnnnaa"\`  (dutch postal code format).
