@@ -327,10 +327,10 @@ function getMethods() {
                 .replace(RegExp(String.fromCharCode(0), "g"), '');
             },
             description: `
-                 is a string templating method, using {[someproperty]} in string and a token object to replace [someproperty]
+                 is a string templating method, using {[someproperty]} in string and a(n array of) token object(s) to replace [someproperty]
                  Example: 
                  <ex>interpolate("Hello {world}", {world: "folks"}); //-> "Hello folks"
-                 interpolate("Hello {world} # ", [{world: "folks"}, {world: "Pete"}]); //-> "Hello folks # Hello Pete"</ex>
+                 interpolate("# Hello {world} ", [{world: "folks"}, {world: "Pete"}]); //-> "# Hello folks # Hello Pete "</ex>
                  You can use it to extend String.prototype:
                  <ex>String.prototype.interpolate = function (tokens) { return interpolate(this, tokens); };</ex>
                  Example usage: 
