@@ -322,27 +322,24 @@ function getMethods() {
         },
         tryParseDate: {
             method: (dateStringCandidateValue, format = "dmy") => {
-                if (!dateStringCandidateValue) {
-                    return null;
-                }
-                let mapFormat = {};
-                format.split("").map((e, i) => (mapFormat[e] = i) && e);
+                if (!dateStringCandidateValue) { return null; }
+                let mapFormat = format.split("").reduce(function (a, b, i) { a[b] = i; return a;}, {});
                 const dateStr2Array = dateStringCandidateValue.split(/[ :\-\/]/g);
-                let datePart = dateStr2Array.slice(0, 3);
-                datePart = [datePart[mapFormat.y],
-                            datePart[mapFormat.m],
-                            datePart[mapFormat.d] ];
-
-                // input string should confer strictly to [format]
-                // otherwise result may not me reliable (locale settings)
-                if (+datePart[0] < 1000) { return null; }
-                else { datePart = datePart.join("/"); }
-
-                const timepart = dateStr2Array.length > 3 && dateStr2Array.slice(3).join(":") || "";
-                const tryDate = datePart.length > 3
-                    ? new Date([datePart, /:$/.test(timepart) ? timepart : timepart + ":"].join(" "))
-                    : new Date(datePart);
-                return tryDate ? tryDate : null;
+                const datePart = dateStr2Array.slice(0, 3);
+                let datePartFormatted = [
+                        +datePart[mapFormat.y],
+                        +datePart[mapFormat.m]-1,
+                        +datePart[mapFormat.d] ];
+                if (dateStr2Array.length > 3) {
+                    dateStr2Array.slice(3).forEach(t => datePartFormatted.push(+t));
+                }
+                // test date validity according to given [format]
+                const dateTrial = new Date(Date.UTC.apply(null, datePartFormatted));
+                return dateTrial.getFullYear() === datePartFormatted[0] &&
+                            dateTrial.getMonth() === datePartFormatted[1] &&
+                            dateTrial.getDate() === datePartFormatted[2]
+                                ? dateTrial :
+                                null;
             },
             description: `
                 tries to parse string [\`dateStringCandidateValue\`] into a Date instance using [\`format\`] 
@@ -354,11 +351,17 @@ function getMethods() {
                 Tester.Test(
                     `tryParseDate("15/04/2001"), "dmy")`,
                     () => this.method("15/04/2001", "dmy"),
-                    val => val.getTime() === new Date('2001/04/15').getTime());
+                    val => val instanceof Date &&
+                        val.getFullYear() == 2001 &&
+                        val.getDate() == 15 &&
+                        val.getMonth()+1 == 4);
                 Tester.Test(
                    `tryParseDate("04/03/1945 01:43"), "mdy")`,
                    () => this.method("04/03/1945 01:43", "mdy"),
-                   val => val.getTime() === new Date('1945/04/03 01:43').getTime());
+                   val => val instanceof Date &&
+                       val.getFullYear() == 1945 &&
+                       val.getDate() == 3 &&
+                       val.getMonth()+1 == 4);
                 Tester.Test(
                     `tryParseDate("04/03/1945"), "ymd")`,
                     () => this.method("04/03/1945", "ymd"),
