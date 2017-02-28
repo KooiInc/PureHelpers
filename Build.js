@@ -50,28 +50,28 @@ function getMethods() {
             }
         },
         checkPostalCode: {
-            method: (postcodeStringCandidate, postalCodeFormat = "nnnnaa") => {
-                postcodeStringCandidate = postcodeStringCandidate.replace(/\s+|\-+/g, '');
-                const formatRE = new RegExp(
-                    "^(" +
-                    postalCodeFormat.toLowerCase().split("").map(el => el === "n" ? "\\d" : "[a-z]").join("") +
-                    ")$", "i");
-                return formatRE.test(postcodeStringCandidate);
-            },
+            method: (postcodeStringCandidate, postalCodeFormat = "nnnnaa") =>
+                new RegExp(`^(${postalCodeFormat
+                    .toLowerCase()
+                    .split("")
+                    .map(el => el === "n" ? "\\d" : "[a-z]").join("")})$`,
+                    "i").test(postcodeStringCandidate.replace(/\s+|\-+/g, '')
+            ),
             description: `
-                checks a postal code to be valid
-                Postal code should consist of numbers and or alphanumeric characters (like '123 ZX')
-                [\`postcodeStringCandidate\`] can contain spaces or hyphens 
+                checks a postal (aka zip-) code [\`postcodeStringCandidate\`] to be valid vis a vis [\`postalCodeFormat\`]
+                Postal code should consist of numbers and or alphanumeric characters (like \`"123 ZX"\`)
+                [\`postcodeStringCandidate\`] can contain spaces or hyphens.
                 [\`postalCodeFormat\`] is a string where \`n\` signifies a number, and \`a\` an alphanumeric character.
-                Default is \`"nnnnaa"\`  (dutch postal code format)
-                Example
+                Default is \`"nnnnaa"\`  (dutch postal code format).
+                Examples
                 <ex>checkPostalCode('9822 AA');             //=> true
-                checkPostoalCode('982234 N');           //=> false
-                checkPostalCode('982234-N', 'nnnnnna'); //=> true</ex>
+                checkPostalCode('982234 N');           //=> false
+                checkPostalCode('982234-N', 'nnnnnna'); //=> true
+                checkPostalCode('98 Z-12B', 'nnanna');  //=> true</ex>
                 Returns \`Boolean\``,
             tests() {
                 Tester.Test("checkPostalCode('9822 AA')", () => this.method("9822 AA"), true, "should be ok" );
-                Tester.Test("checkPostoalCode('982234 N')", () => this.method("982234 N"), false, "should be false");
+                Tester.Test("checkPostalCode('982234 N')", () => this.method("982234 N"), false, "should be false");
                 Tester.Test("checkPostalCode('982234-N', 'nnnnnna')", () => this.method("982234-N", "nnnnnna"), true, "should be true");
                 Tester.Test("checkPostalCode('982234-N', 'nannnna')", () => this.method("982234-N", "nannnna"), false, "should be false");
                 Tester.Test("checkPostalCode('98 Z-12B', 'nnanna')", () => this.method("98 Z-12B", "nnanna"), true, "should be true");
