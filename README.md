@@ -63,7 +63,7 @@ Returns `String`
 
 **Parameters** `nValues, maxRandomValue`
 
-**It** retrieves an `Array` of [`nValues`] unique random number values from 1 to [`maxRandomValue`]
+**It** retrieves an `Array` of [`nValues`] unique (pseudo) random number values from 1 to [`maxRandomValue`]
 
 
 Returns `Array`

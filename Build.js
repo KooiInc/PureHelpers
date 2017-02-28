@@ -68,7 +68,7 @@ function getMethods() {
                     val => val && val.filter( function(a) {return !this[a] ? this[a] = true : false;}, {} ).length === 3);
         },
         description: `
-                 retrieves an \`Array\` of [\`nValues\`] unique random number values from 1 to [\`maxRandomValue\`]
+                 retrieves an \`Array\` of [\`nValues\`] unique (pseudo) random number values from 1 to [\`maxRandomValue\`]
                  Returns \`Array\``,
         },
         repeatString: {
