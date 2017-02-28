@@ -59,6 +59,19 @@ Returns `String`
 --
 
 
+**Method** `getUniqueRandomValues`
+
+**Parameters** `nValues, maxRandomValue`
+
+**It** retrieves an `Array` of [`nValues`] unique random number values from 1 to [`maxRandomValue`]
+
+
+Returns `Array`
+
+
+--
+
+
 **Method** `repeatString`
 
 **Parameters** `string2Repeat, n2Repeat`
