@@ -141,7 +141,7 @@ function getMethods() {
                 truncates [\`string2Truncate\`] @ position [\`truncateAtPosition\`] 
                 if [\`truncateOnWholeWordsOnly\`] is true, \`string2Truncate\` will be truncated right after the last word in the truncated string
                 Examples
-                <ex>truncateString("this is too long", 10); //=> this is to...
+                <ex>truncateString("this is too long", 10);       //=> this is to...
                 truncateString("this is too long", 10, true); //=> this is...</ex>
                 Returns \`String\``,
                 tests() {
