@@ -90,7 +90,7 @@ Examples
 
 ```javascript
 checkPostalCode('9822 AA');             //=> true
-checkPostalCode('982234 N');           //=> false
+checkPostalCode('982234 N');            //=> false
 checkPostalCode('982234-N', 'nnnnnna'); //=> true
 checkPostalCode('98 Z-12B', 'nnanna');  //=> true
 ```
