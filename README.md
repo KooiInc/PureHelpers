@@ -41,7 +41,8 @@ Use `node build test` to test, `node build createjs` to (re)build PureHelpers.js
 ,`node build readme` to (re)create README.md and `node build all` to do it all.
 
 
-**Note**: in all cases the tests are run first. If testing fails, rebuild/README.md will not be created.
+**Note**: in case of building the js-file the tests are run first. 
+If one or more of the tests fail, PureHelpers.js will *not* be created.
 
 
 #Available methods #

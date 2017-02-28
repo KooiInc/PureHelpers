@@ -460,7 +460,8 @@ function getHeaderLines() {
         " - A method to create a README.md from the description property in each method object",
         "\nUse `node build test` to test, `node build createjs` to (re)build PureHelpers.js ",
         ",`node build readme` to (re)create README.md and `node build all` to do it all.\n",
-        "\n**Note**: in all cases the tests are run first. If testing fails, rebuild/README.md will not be created.\n",
+        "\n**Note**: in case of building the js-file the tests are run first. ",
+        "If one or more of the tests fail, PureHelpers.js will *not* be created.\n",
         "\n#Available methods #\n"
     ].join("\n");
 }
