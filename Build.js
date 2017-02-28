@@ -333,13 +333,12 @@ function getMethods() {
                 if (dateStr2Array.length > 3) {
                     dateStr2Array.slice(3).forEach(t => datePartFormatted.push(+t));
                 }
-                // test date validity according to given [format]
                 const dateTrial = new Date(Date.UTC.apply(null, datePartFormatted));
                 return dateTrial.getFullYear() === datePartFormatted[0] &&
-                            dateTrial.getMonth() === datePartFormatted[1] &&
-                            dateTrial.getDate() === datePartFormatted[2]
-                                ? dateTrial :
-                                null;
+                       dateTrial.getMonth() === datePartFormatted[1] &&
+                       dateTrial.getDate() === datePartFormatted[2]
+                        ? dateTrial :
+                        null;
             },
             description: `
                 tries to parse string [\`dateStringCandidateValue\`] into a Date instance using [\`format\`] 
