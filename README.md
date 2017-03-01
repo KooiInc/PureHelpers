@@ -47,7 +47,7 @@ If one or more of the tests fail, PureHelpers.js will *not* be created.
 
 
 #Available methods #
-**Method** `randomString`
+##randomString##
 
 **Parameters** `prefix = "", minRandomNumberValue = 10000, maxRandomNumberValue = 10000000`
 
@@ -60,7 +60,7 @@ Returns `String`
 --
 
 
-**Method** `getUniqueRandomValues`
+##getUniqueRandomValues##
 
 **Parameters** `nValues, maxRandomValue`
 
@@ -73,7 +73,7 @@ Returns `Array`
 --
 
 
-**Method** `repeatString`
+##repeatString##
 
 **Parameters** `string2Repeat, n2Repeat`
 
@@ -85,7 +85,7 @@ Returns `Array`
 --
 
 
-**Method** `checkPostalCode`
+##checkPostalCode##
 
 **Parameters** `postcodeStringCandidate, postalCodeFormat = "nnnnaa"`
 
@@ -115,7 +115,7 @@ Returns `Boolean`
 --
 
 
-**Method** `cleanupWhitespace`
+##cleanupWhitespace##
 
 **Parameters** `string2Cleanup`
 
@@ -139,7 +139,7 @@ Returns `String`
 --
 
 
-**Method** `charAtIsUpperCase`
+##charAtIsUpperCase##
 
 **Parameters** `inputString, atpos`
 
@@ -154,7 +154,7 @@ returns `Boolean`
 --
 
 
-**Method** `charAtIsLowerCase`
+##charAtIsLowerCase##
 
 **Parameters** `inputString, atpos`
 
@@ -169,7 +169,7 @@ returns `Boolean`
 --
 
 
-**Method** `truncateString`
+##truncateString##
 
 **Parameters** `string2Truncate, truncateAtPosition, truncateOnWholeWordsOnly`
 
@@ -191,7 +191,7 @@ Returns `String`
 --
 
 
-**Method** `splitAndClean`
+##splitAndClean##
 
 **Parameters** `string2Split, splitter`
 
@@ -213,7 +213,7 @@ Returns `Array`
 --
 
 
-**Method** `isPrime`
+##isPrime##
 
 **Parameters** `number`
 
@@ -228,7 +228,7 @@ Returns `Boolean`
 --
 
 
-**Method** `hash2Object`
+##hash2Object##
 
 **Parameters** `hashInput`
 
@@ -250,7 +250,7 @@ Returns `Object`
 --
 
 
-**Method** `uniqueValuesFromArray`
+##uniqueValuesFromArray##
 
 **Parameters** `inputArray`
 
@@ -271,7 +271,7 @@ returns `Array`
 --
 
 
-**Method** `numberBetween`
+##numberBetween##
 
 **Parameters** `number, min, max`
 
@@ -292,7 +292,7 @@ Returns `Boolean`
 --
 
 
-**Method** `padLeft`
+##padLeft##
 
 **Parameters** `number, base = 10, char = "0"`
 
@@ -314,7 +314,7 @@ Returns `String`
 --
 
 
-**Method** `interpolate`
+##interpolate##
 
 **Parameters** `string2Interpolate, tokens`
 
@@ -346,7 +346,7 @@ Returns `String`
 --
 
 
-**Method** `tryParseDate`
+##tryParseDate##
 
 **Parameters** `dateStringCandidateValue, format = "dmy"`
 
