@@ -2,8 +2,9 @@
 Importable mostly 'pure' ES helper methods.
 
 ##Usage
-Download files to your computer. 
-Within the download directory, open a cmd window and start `npm install`.
+Use `npm install purehelpers`.
+Or download files to your computer. After downloading 
+within the download directory, open a cmd window and start `npm install`.
 
 
 Now the file `PureHelpers.js` is the main file to use. For example:
