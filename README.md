@@ -103,6 +103,31 @@ checkPostalCode('98 Z-12B', 'nnanna');  //=> true
 Returns `Boolean`
 
 
+##checkEmailValidity##
+
+**Parameters** `emailValueCandidate`
+
+**It** checks *syntactic* validity of email address [`emailValueCandidate`].
+
+
+**Note**: this will not absolutely guarantee the address validity. It's a sloppy first check. 
+
+The only 100% guaranteed verification of an e-mail address is to send a mail to it.
+
+[See also](https://hackernoon.com/the-100-correct-way-to-validate-email-addresses-7c4818f24643#.1e40365kv)
+
+Examples
+
+```javascript
+checkEmailValidity('I.Am.Email@somewhere.com'); //=> true
+checkEmailValidity('I-Am-Ëmáil@isok.eu');       //=> true
+checkEmailValidity('IAmNotEmail@@notok.nl');    //=> false
+
+```
+
+Returns `Boolean`
+
+
 ##cleanupWhitespace##
 
 **Parameters** `string2Cleanup`

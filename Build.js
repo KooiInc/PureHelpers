@@ -108,6 +108,40 @@ function getMethods() {
                 Tester.Test("checkPostalCode('98 Z-12B', 'nnanna')", () => this.method("98 Z-12B", "nnanna"), true, "should be true");
             }
         },
+        checkEmailValidity: {
+            method: emailValueCandidate =>
+                 new RegExp(['^((([a-z]|\\d|[!#\\$%&\'\\*\\+\\-\\/=\\?\\^_`{\\|}~]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])',
+                    '+(\\.([a-z]|\\d|[!#\\$%&\'\\*\\+\\-\\/=\\?\\^_`{\\|}~]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])+)*)',
+                    '|((\\x22)((((\\x20|\\x09)*(\\x0d\\x0a))?(\\x20|\\x09)+)?(([\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x7f]|\\x21|',
+                    '[\\x23-\\x5b]|[\\x5d-\\x7e]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|',
+                    '(\\\\([\\x01-\\x09\\x0b\\x0c\\x0d-\\x7f]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF]))))*',
+                    '(((\\x20|\\x09)*(\\x0d\\x0a))?(\\x20|\\x09)+)?(\\x22)))@((([a-z]|\\d|',
+                    '[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|(([a-z]|\\d|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])',
+                    '([a-z]|\\d|-|\\.|_|~|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|\\d|',
+                    '[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.)+(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])|',
+                    '(([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])([a-z]|\\d|-|\\.|_|~|',
+                    '[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?$']
+                .join(''), 'i').test(emailValueCandidate.trim()),
+            tests() {
+                Tester.Test("checkEmailValidity('I.Am.Email@somewhere.com')", () => this.method("I.Am.Email@somewhere.com"), true, "should be ok" );
+                Tester.Test("checkEmailValidity('I.Am.NotEmail@somewhere')", () => this.method("I.Am.NotEmail@somewhere"), false, "should not be ok" );
+                Tester.Test("checkEmailValidity('IAmNotEmail')", () => this.method("IAmNotEmail"), false, "should not be ok" );
+                Tester.Test("checkEmailValidity('IAmNotEmail@@notok.nl')", () => this.method("IAmNotEmail@@notok.nl"), false, "should not be ok" );
+                Tester.Test("checkEmailValidity('I-Am-Ëmáil@isok.eu')", () => this.method("IAmNotEmail@@notok.nl"), false, "should be ok" );
+                Tester.Test("checkEmailValidity('I^Am~Ëmáil@isok.eu')", () => this.method("IAmNotEmail@@notok.nl"), false, "should be ok" );
+            },
+            description: `
+                checks *syntactic* validity of email address [\`emailValueCandidate\`].
+                **Note**: this will not absolutely guarantee the address validity. It's a sloppy first check. 
+                The only 100% guaranteed verification of an e-mail address is to send a mail to it.
+                [See also](https://hackernoon.com/the-100-correct-way-to-validate-email-addresses-7c4818f24643#.1e40365kv)
+                Examples
+                <ex>checkEmailValidity('I.Am.Email@somewhere.com'); //=> true
+                checkEmailValidity('I-Am-Ëmáil@isok.eu');       //=> true
+                checkEmailValidity('IAmNotEmail@@notok.nl');    //=> false
+                </ex>
+                Returns \`Boolean\``,
+        },
         cleanupWhitespace: {
             method: string2Cleanup =>
                 string2Cleanup
