@@ -47,7 +47,8 @@ If one or more of the tests fail, PureHelpers.js will *not* be created.
 
 
 #Available methods #
-##randomString##                 
+##randomString##
+
 **Parameters** `prefix = "", minRandomNumberValue = 10000, maxRandomNumberValue = 10000000`
 
 **It** creates a random (hex) number string, possibly preceded with a prefix
@@ -56,7 +57,8 @@ If one or more of the tests fail, PureHelpers.js will *not* be created.
 Returns `String`
 
 
-##getUniqueRandomValues##                 
+##getUniqueRandomValues##
+
 **Parameters** `nValues, maxRandomValue`
 
 **It** retrieves an `Array` of [`nValues`] unique (pseudo) random number values from 1 to [`maxRandomValue`]
@@ -65,7 +67,8 @@ Returns `String`
 Returns `Array`
 
 
-##repeatString##                 
+##repeatString##
+
 **Parameters** `string2Repeat, n2Repeat`
 
 **It** returns a `String` where [`string2Repeat`] is repeated [`n2Repeat`] times
@@ -73,7 +76,8 @@ Returns `Array`
 
 
 
-##checkPostalCode##                 
+##checkPostalCode##
+
 **Parameters** `postcodeStringCandidate, postalCodeFormat = "nnnnaa"`
 
 **It** checks a postal (aka zip-) code [`postcodeStringCandidate`] to be valid vis a vis [`postalCodeFormat`]
@@ -99,7 +103,8 @@ checkPostalCode('98 Z-12B', 'nnanna');  //=> true
 Returns `Boolean`
 
 
-##cleanupWhitespace##                 
+##cleanupWhitespace##
+
 **Parameters** `string2Cleanup`
 
 **It** removes *all* extra whitespace from [`string2Cleanup`] 
@@ -119,7 +124,8 @@ Returns `String`
 
 
 
-##charAtIsUpperCase##                 
+##charAtIsUpperCase##
+
 **Parameters** `inputString, atpos`
 
 **It** determines if the character at [`atPos`] within [`inputString`] is upper case
@@ -130,7 +136,8 @@ returns `Boolean`
 
 
 
-##charAtIsLowerCase##                 
+##charAtIsLowerCase##
+
 **Parameters** `inputString, atpos`
 
 **It** determines if the character at [`atPos`] (zero based) within [`inputString`] is lower case
@@ -141,7 +148,8 @@ returns `Boolean`
 
 
 
-##truncateString##                 
+##truncateString##
+
 **Parameters** `string2Truncate, truncateAtPosition, truncateOnWholeWordsOnly`
 
 **It** truncates [`string2Truncate`] @ position [`truncateAtPosition`] 
@@ -159,7 +167,8 @@ truncateString("this is too long", 10, true); //=> this is...
 Returns `String`
 
 
-##splitAndClean##                 
+##splitAndClean##
+
 **Parameters** `string2Split, splitter`
 
 **It** splits [`string2Split`] using [`splitter`] and removes empty values from the resulting `Array`
@@ -177,7 +186,8 @@ splitAndClean("some\n\n\nstring", /\n/); //=> ["some", "string"]
 Returns `Array`
 
 
-##isPrime##                 
+##isPrime##
+
 **Parameters** `number`
 
 **It** determines (fast) if [`number`] is a prime number
@@ -188,7 +198,8 @@ See it [in action](http://jsfiddle.net/KooiInc/g5rg3rxn/embedded/result,js,html,
 Returns `Boolean`
 
 
-##hash2Object##                 
+##hash2Object##
+
 **Parameters** `hashInput`
 
 **It** deserializes a (url) hash string [`hashInput`] to a key-value pair collection
@@ -206,7 +217,8 @@ Returns `Object`
 
 
 
-##uniqueValuesFromArray##                 
+##uniqueValuesFromArray##
+
 **Parameters** `inputArray`
 
 **It** retrieves unique values from [`inputArray`]
@@ -223,7 +235,8 @@ returns `Array`
 
 
 
-##numberBetween##                 
+##numberBetween##
+
 **Parameters** `number, min, max`
 
 **It** determines if [`number`] falls between [`min`] and [`max`]
@@ -240,7 +253,8 @@ numberBetween(num, 16, 20); //=> false
 Returns `Boolean`
 
 
-##padLeft##                 
+##padLeft##
+
 **Parameters** `number, base = 10, char = "0"`
 
 **It** left-pads a [`number`] with [`base`] - [`number`].length [`char`] 
@@ -258,7 +272,8 @@ Returns `String`
 
 
 
-##interpolate##                 
+##interpolate##
+
 **Parameters** `string2Interpolate, tokens`
 
 **It** is a string templating method, using {[someproperty]} in string and a(n array of) token object(s) to replace [someproperty]
@@ -286,7 +301,8 @@ Example usage:
 Returns `String`
 
 
-##tryParseDate##                 
+##tryParseDate##
+
 **Parameters** `dateStringCandidateValue, format = "dmy"`
 
 **It** tries to parse string [`dateStringCandidateValue`] into a Date instance using [`format`] 

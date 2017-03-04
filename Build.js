@@ -449,7 +449,7 @@ function CreateREADME() {
         const fs = require("fs");
         const rmLines = getHeaderLines() +
             this.methodInfo.map(m =>
-                `##${m.name}##                 
+                `##${m.name}##\n                 
                  **Parameters** \`${ m.info.methodLine.trim() }\`
                  
                  **It** ${ m.info.it }
