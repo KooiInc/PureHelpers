@@ -483,7 +483,8 @@ function CreateREADME() {
         const fs = require("fs");
         const rmLines = getHeaderLines() +
             this.methodInfo.map(m =>
-                `##${m.name}##\n                 
+                `##${m.name}
+                                 
                  **Parameters** \`${ m.info.methodLine.trim() }\`
                  
                  **It** ${ m.info.it }
@@ -511,7 +512,7 @@ function str2JsExample(str) {
 }
 
 function getHeaderLines() {
-    return ["# PureHelpers",
+    return ["#PureHelpers",
         "Importable mostly 'pure' ES helper methods.",
         "",
         "##Usage",
@@ -530,7 +531,7 @@ function getHeaderLines() {
         "Now within your library file you can call\n",
         str2JsExample("numberBetween(15, 5, 20); //-> true"),
         "\nNote: a non existing method will translate to a method returning an error string.\n",
-        "\n##Build.js Usage##\n",
+        "\n##Build.js builder file usage\n",
         "\nBuild.js contains:\n",
         " - Tests for all methods",
         " - A method to export only the methods to PureHelpers.js (the entry point of this library)",
@@ -539,7 +540,7 @@ function getHeaderLines() {
         ",`node build readme` to (re)create README.md and `node build all` to do it all.\n",
         "\n**Note**: in case of building the js-file the tests are run first. ",
         "If one or more of the tests fail, PureHelpers.js will *not* be created.\n",
-        "\n#Available methods #\n"
+        "\n#Available methods\n"
     ].join("\n");
 }
 

@@ -1,4 +1,4 @@
-# PureHelpers
+#PureHelpers
 Importable mostly 'pure' ES helper methods.
 
 ##Usage
@@ -29,7 +29,7 @@ numberBetween(15, 5, 20); //-> true
 Note: a non existing method will translate to a method returning an error string.
 
 
-##Build.js Usage##
+##Build.js builder file usage
 
 
 Build.js contains:
@@ -46,8 +46,8 @@ Use `node build test` to test, `node build createjs` to (re)build PureHelpers.js
 If one or more of the tests fail, PureHelpers.js will *not* be created.
 
 
-#Available methods #
-##randomString##
+#Available methods
+##randomString
 
 **Parameters** `prefix = "", minRandomNumberValue = 10000, maxRandomNumberValue = 10000000`
 
@@ -57,7 +57,7 @@ If one or more of the tests fail, PureHelpers.js will *not* be created.
 Returns `String`
 
 
-##getUniqueRandomValues##
+##getUniqueRandomValues
 
 **Parameters** `nValues, maxRandomValue`
 
@@ -67,7 +67,7 @@ Returns `String`
 Returns `Array`
 
 
-##repeatString##
+##repeatString
 
 **Parameters** `string2Repeat, n2Repeat`
 
@@ -76,7 +76,7 @@ Returns `Array`
 
 
 
-##checkPostalCode##
+##checkPostalCode
 
 **Parameters** `postcodeStringCandidate, postalCodeFormat = "nnnnaa"`
 
@@ -103,7 +103,7 @@ checkPostalCode('98 Z-12B', 'nnanna');  //=> true
 Returns `Boolean`
 
 
-##checkEmailValidity##
+##checkEmailValidity
 
 **Parameters** `emailValueCandidate`
 
@@ -128,7 +128,7 @@ checkEmailValidity('IAmNotEmail@@notok.nl');    //=> false
 Returns `Boolean`
 
 
-##cleanupWhitespace##
+##cleanupWhitespace
 
 **Parameters** `string2Cleanup`
 
@@ -149,7 +149,7 @@ Returns `String`
 
 
 
-##charAtIsUpperCase##
+##charAtIsUpperCase
 
 **Parameters** `inputString, atpos`
 
@@ -161,7 +161,7 @@ returns `Boolean`
 
 
 
-##charAtIsLowerCase##
+##charAtIsLowerCase
 
 **Parameters** `inputString, atpos`
 
@@ -173,7 +173,7 @@ returns `Boolean`
 
 
 
-##truncateString##
+##truncateString
 
 **Parameters** `string2Truncate, truncateAtPosition, truncateOnWholeWordsOnly`
 
@@ -192,7 +192,7 @@ truncateString("this is too long", 10, true); //=> this is...
 Returns `String`
 
 
-##splitAndClean##
+##splitAndClean
 
 **Parameters** `string2Split, splitter`
 
@@ -211,7 +211,7 @@ splitAndClean("some\n\n\nstring", /\n/); //=> ["some", "string"]
 Returns `Array`
 
 
-##isPrime##
+##isPrime
 
 **Parameters** `number`
 
@@ -223,7 +223,7 @@ See it [in action](http://jsfiddle.net/KooiInc/g5rg3rxn/embedded/result,js,html,
 Returns `Boolean`
 
 
-##hash2Object##
+##hash2Object
 
 **Parameters** `hashInput`
 
@@ -242,7 +242,7 @@ Returns `Object`
 
 
 
-##uniqueValuesFromArray##
+##uniqueValuesFromArray
 
 **Parameters** `inputArray`
 
@@ -260,7 +260,7 @@ returns `Array`
 
 
 
-##numberBetween##
+##numberBetween
 
 **Parameters** `number, min, max`
 
@@ -278,7 +278,7 @@ numberBetween(num, 16, 20); //=> false
 Returns `Boolean`
 
 
-##padLeft##
+##padLeft
 
 **Parameters** `number, base = 10, char = "0"`
 
@@ -297,7 +297,7 @@ Returns `String`
 
 
 
-##interpolate##
+##interpolate
 
 **Parameters** `string2Interpolate, tokens`
 
@@ -326,7 +326,7 @@ Example usage:
 Returns `String`
 
 
-##tryParseDate##
+##tryParseDate
 
 **Parameters** `dateStringCandidateValue, format = "dmy"`
 
