@@ -250,9 +250,7 @@ function getMethods() {
             }
         },
         uniqueValuesFromArray: {
-            method: inputArray => inputArray.filter(
-                function(a) {return !this[a] ? this[a] = true : false;}, {}
-            ),
+            method: inputArray => inputArray.filter( function(a) {return !this[a] ? this[a] = true : false;}, {} ),
             description: `
                 retrieves unique values from [\`inputArray\`]
                 <ex>
@@ -451,16 +449,12 @@ function CreateREADME() {
         const fs = require("fs");
         const rmLines = getHeaderLines() +
             this.methodInfo.map(m =>
-                `##${m.name}##
+                `##${m.name}##                 
+                 **Parameters** \`${ m.info.methodLine.trim() }\`
                  
-                 **Parameters** \`${m.info.methodLine.trim()}\`
-                 
-                 **It** ${m.info.it}
+                 **It** ${ m.info.it }
                  
                  ${ (m.info.moreInfo.length && '\n' + m.info.moreInfo || "") }
-                     
-                 
-                 --
                 `).join('\n\n')
                 .replace(/^ +/gm, '')
                 .replace( /\|x\d+\|/gi, t => repeater(" ", +t.match(/\d+/)[0]));
