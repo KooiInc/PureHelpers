@@ -1,7 +1,7 @@
 {
   "name": "purehelpers",
-  "version": "1.0.4",
-  "description": "Pure importable helper methods",
+  "version": "1.0.5",
+  "description": "Importable helper methods",
   "main": "PureHelpers.js",
   "dependencies": {
     "js-beautify": "^1.6.11"
