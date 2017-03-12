@@ -525,11 +525,6 @@ function getHeaderLines() {
             "helpers.randomString();\n" +
             "Number.prototype.between = function (min, max) { return helpers.numberBetween(this, min, max); }\n" +
             "// etc."),
-        "If you want to import methods in the *current* namespace directly, use",
-        "",
-        str2JsExample("[yourAlreadyRequiredPureHelperLib].import({numberBetween: 1, truncateString: 1}, function() { return this; }())"),
-        "Now within your library file you can call\n",
-        str2JsExample("numberBetween(15, 5, 20); //-> true"),
         "\nNote: a non existing method will translate to a method returning an error string.\n",
         "\n##Build.js builder file usage\n",
         "\nBuild.js contains:\n",
