@@ -120,9 +120,9 @@ Returns `Boolean`
 
 ##cleanupWhitespace
 
-**Parameters** `string2Cleanup`
+**Parameters** `string2Cleanup, keepCRLF = false`
 
-**It** removes *all* extra whitespace from [`string2Cleanup`] 
+**It** removes extra whitespace from [`string2Cleanup`] or extra whitespace except CR/LF (`\n`) with [`keepCRLF === true`]   
 
 
 Example
@@ -132,6 +132,14 @@ cleanupWhitespace(`
       free me of all      that
       whitespace here     
                 `); //=> "free me of all that whitespace here"
+```
+
+```javascript
+cleanupWhitespace(`  
+      free me of all      that
+      whitespace here     
+                `); //=> "free me of all that 
+whitespace here"
 ```
 
 Returns `String`

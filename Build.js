@@ -143,25 +143,31 @@ function getMethods() {
                 Returns \`Boolean\``,
         },
         cleanupWhitespace: {
-            method: string2Cleanup =>
+            method: (string2Cleanup, keepCRLF = false) =>
                 string2Cleanup
                     .trim()
-                    .replace(/\n|\r|\r\n/g, '')
-                    .replace(/\s{2,}\W/g, ' ')
+                    .replace(/\r|\n|\r\n/g, keepCRLF ? "##" : "")
+                    .replace(/\s{2,}/g, ' ')
                     .replace(/(>\s+<)/g, '><')
-                    .replace(/ {1,}>/g, '>')
-                    .replace(/^\s|^\s+|\s$|\s+$/g, ''),
+                    .replace(/\s+>/g, '>')
+                    .replace(/##/gm, "\n"),
             description: `
-                removes *all* extra whitespace from [\`string2Cleanup\`] 
+                removes extra whitespace from [\`string2Cleanup\`] or extra whitespace except CR/LF (\`\\n\`) with [\`keepCRLF === true\`]   
                 Example
                 <ex>cleanupWhitespace(\`  
                 |x5| free me of all      that
                 |x5| whitespace here     
                 |x12|    \`); //=> "free me of all that whitespace here"</ex>
+                 <ex>cleanupWhitespace(\`  
+                |x5| free me of all      that
+                |x5| whitespace here     
+                |x12|    \`); //=> "free me of all that 
+                whitespace here"</ex>
                 Returns \`String\`
             `,
             tests() {
                 Tester.Test(`cleanupWhitespace("   9822     \\nAA   \\t ")`, () => this.method("   9822     \nAA   \t "),  "9822 AA");
+                Tester.Test(`cleanupWhitespace("   9822     \\nAA", true)`, () => this.method("   9822     \nAA", true),  "9822 \nAA");
             }
         },
         charAtIsUpperCase: {
