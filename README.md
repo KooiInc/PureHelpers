@@ -140,7 +140,7 @@ cleanupWhitespace(`
 cleanupWhitespace(`  
       free me of all      that
       whitespace here     
-                `); //=> "free me of all that
+                `); //=> "free me of all that 
 whitespace here"
 ```
 
