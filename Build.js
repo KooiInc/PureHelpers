@@ -143,16 +143,20 @@ function getMethods() {
                 Returns \`Boolean\``,
         },
         cleanupWhitespace: {
-            method: (string2Cleanup, keepCRLF = false) =>
-                string2Cleanup
-                    .trim()
+            method: (string2Cleanup, keepCRLF = false) => {
+                const cleanup = str => str
                     .replace(/\r|\n|\r\n/g, keepCRLF ? "##" : "")
                     .replace(/\s{2,}/g, ' ')
                     .replace(/(>\s+<)/g, '><')
                     .replace(/\s+>/g, '>')
-                    .replace(/##/gm, "\n"),
+                    .replace(/##/gm, "\n");
+                return keepCRLF
+                    ? string2Cleanup.split(/\r|\n|\r\n/g).map(s => cleanup(s)).join('\n').trim()
+                    : cleanup(string2Cleanup).trim();
+            },
             description: `
-                removes extra whitespace from [\`string2Cleanup\`] or extra whitespace except CR/LF (\`\\n\`) with [\`keepCRLF === true\`]   
+                removes extra whitespace from [\`string2Cleanup\`] or extra whitespace except CR/LF (\`\\n\`) with [\`keepCRLF === true\`]
+                **NOTE** also cleans whitespace within html-tags
                 Example
                 <ex>cleanupWhitespace(\`  
                 |x5| free me of all      that
@@ -161,8 +165,7 @@ function getMethods() {
                  <ex>cleanupWhitespace(\`  
                 |x5| free me of all      that
                 |x5| whitespace here     
-                |x12|    \`); //=> "free me of all that 
-                whitespace here"</ex>
+                |x12|    \`); //=> "free me of all that\n whitespace here"</ex>
                 Returns \`String\`
             `,
             tests() {

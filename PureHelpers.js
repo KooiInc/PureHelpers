@@ -39,14 +39,17 @@ const methods = {
                 '[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])*([a-z]|[\\u00A0-\\uD7FF\\uF900-\\uFDCF\\uFDF0-\\uFFEF])))\\.?$'
             ]
             .join(''), 'i').test(emailValueCandidate.trim()),
-    cleanupWhitespace: (string2Cleanup, keepCRLF = false) =>
-        string2Cleanup
-        .trim()
-        .replace(/\r|\n|\r\n/g, keepCRLF ? "##" : "")
-        .replace(/\s{2,}/g, ' ')
-        .replace(/(>\s+<)/g, '><')
-        .replace(/\s+>/g, '>')
-        .replace(/##/gm, "\n"),
+    cleanupWhitespace: (string2Cleanup, keepCRLF = false) => {
+        const cleanup = str => str
+            .replace(/\r|\n|\r\n/g, keepCRLF ? "##" : "")
+            .replace(/\s{2,}/g, ' ')
+            .replace(/(>\s+<)/g, '><')
+            .replace(/\s+>/g, '>')
+            .replace(/##/gm, "\n");
+        return keepCRLF ?
+            string2Cleanup.split(/\r|\n|\r\n/g).map(s => cleanup(s)).join('\n').trim() :
+            cleanup(string2Cleanup).trim();
+    },
     charAtIsUpperCase: (inputString, atpos) => {
         const chr = inputString.charAt(atpos);
         return /[A-Z]|[\u0080-\u024F]/.test(chr) && chr === chr.toUpperCase();

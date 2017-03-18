@@ -122,8 +122,10 @@ Returns `Boolean`
 
 **Parameters** `string2Cleanup, keepCRLF = false`
 
-**It** removes extra whitespace from [`string2Cleanup`] or extra whitespace except CR/LF (`\n`) with [`keepCRLF === true`]   
+**It** removes extra whitespace from [`string2Cleanup`] or extra whitespace except CR/LF (`\n`) with [`keepCRLF === true`]
 
+
+**NOTE** also cleans whitespace within html-tags
 
 Example
 
@@ -138,7 +140,7 @@ cleanupWhitespace(`
 cleanupWhitespace(`  
       free me of all      that
       whitespace here     
-                `); //=> "free me of all that 
+                `); //=> "free me of all that
 whitespace here"
 ```
 
