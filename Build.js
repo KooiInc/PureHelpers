@@ -165,7 +165,7 @@ function getMethods() {
                  <ex>cleanupWhitespace(\`  
                 |x5| free me of all      that
                 |x5| whitespace here     
-                |x12|    \`); //=> "free me of all that \n whitespace here"</ex>
+                |x12|    \`); //=> "free me of all that\\nwhitespace here"</ex>
                 Returns \`String\`
             `,
             tests() {
