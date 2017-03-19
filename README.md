@@ -127,7 +127,7 @@ Returns `Boolean`
 
 **NOTE** also cleans whitespace within html-tags
 
-Example
+Examples
 
 ```javascript
 cleanupWhitespace(`  
@@ -140,7 +140,7 @@ cleanupWhitespace(`
 cleanupWhitespace(`  
       free me of all      that
       whitespace here     
-                `); //=> "free me of all that\n whitespace here"
+                `, true); //=> "free me of all that\n whitespace here"
 ```
 
 Returns `String`

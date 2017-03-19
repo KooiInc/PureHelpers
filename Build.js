@@ -157,7 +157,7 @@ function getMethods() {
             description: `
                 removes extra whitespace from [\`string2Cleanup\`] or extra whitespace except CR/LF (\`\\n\`) with [\`keepCRLF === true\`]
                 **NOTE** also cleans whitespace within html-tags
-                Example
+                Examples
                 <ex>cleanupWhitespace(\`  
                 |x5| free me of all      that
                 |x5| whitespace here     
@@ -165,7 +165,7 @@ function getMethods() {
                  <ex>cleanupWhitespace(\`  
                 |x5| free me of all      that
                 |x5| whitespace here     
-                |x12|    \`); //=> "free me of all that\\n whitespace here"</ex>
+                |x12|    \`, true); //=> "free me of all that\\n whitespace here"</ex>
                 Returns \`String\`
             `,
             tests() {
