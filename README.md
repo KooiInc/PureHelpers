@@ -139,8 +139,7 @@ cleanupWhitespace(`
 ```javascript
 cleanupWhitespace(`  
       free me of all      that
-      whitespace here     
-                `, true); //=> "free me of all that\n whitespace here"
+      whitespace here`, true); //=> "free me of all that\n whitespace here"
 ```
 
 Returns `String`
