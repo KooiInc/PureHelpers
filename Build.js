@@ -492,7 +492,7 @@ function CreateREADME() {
         const fs = require("fs");
         const rmLines = getHeaderLines() +
             this.methodInfo.map(m =>
-                `##${m.name}
+                `##${m.name}##
                                  
                  **Parameters** \`${ m.info.methodLine.trim() }\`
                  
@@ -535,7 +535,7 @@ function getHeaderLines() {
             "Number.prototype.between = function (min, max) { return helpers.numberBetween(this, min, max); }\n" +
             "// etc."),
         "\nNote: a non existing method will translate to a method returning an error string.\n",
-        "\n##Build.js builder file usage\n",
+        "\n##Build.js builder file usage##\n",
         "\nBuild.js contains:\n",
         " - Tests for all methods",
         " - A method to export only the methods to PureHelpers.js (the entry point of this library)",
@@ -544,7 +544,7 @@ function getHeaderLines() {
         ",`node build readme` to (re)create README.md and `node build all` to do it all.\n",
         "\n**Note**: in case of building the js-file the tests are run first. ",
         "If one or more of the tests fail, PureHelpers.js will *not* be created.\n",
-        "\n#Available methods\n"
+        "\n#Available methods#\n"
     ].join("\n");
 }
 
