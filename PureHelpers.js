@@ -18,6 +18,16 @@ const methods = {
         return Array(nValues).join(",").split(",")
             .map(() => randomUnique());
     },
+    regExForDiacriticals: modifiers => new RegExp(
+        ['[\\.\\-a-z\\s]|', // [a-z, . - and space]
+            '[\\300-\\306\\340-\\346]|', // all accented A, a
+            '[\\310-\\313\\350-\\353]|', // all accented E, e
+            '[\\314-\\317\\354-\\357]|', // all accented I, i
+            '[\\322-\\330\\362-\\370]|', // all accented O, o
+            '[\\331-\\334\\371-\\374]|', // all accented U, u
+            '[\\321-\\361]|', // all accented N, n
+            '[\\307-\\347]' // all accented C, c
+        ].join(''), modifiers),
     repeatString: (string2Repeat, n2Repeat) => Array(n2Repeat).join(string2Repeat) + string2Repeat,
     checkPostalCode: (postcodeStringCandidate, postalCodeFormat = "nnnnaa") =>
         new RegExp(`^(${postalCodeFormat

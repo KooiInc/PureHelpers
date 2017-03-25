@@ -57,6 +57,20 @@ Returns `String`
 Returns `Array`
 
 
+## regExForDiacriticals
+
+**Parameters** `modifiers`
+
+**It** returns a regular expression for all diacritical characters.
+
+
+`[modifiers]`: use know RegEx modifiers if applicable (e.g. `"im"` or `"gi"`)
+
+Returns this `Regex`: 
+
+`/[\.\-a-z\s]|[\300-\306\340-\346]|[\310-\313\350-\353]|[\314-\317\354-\357]|[\322-\330\362-\370]|[\331-\334\371-\374]|[\321-\361]|[\307-\347]/`[modifiers]
+
+
 ## repeatString
 
 **Parameters** `string2Repeat, n2Repeat`

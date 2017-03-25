@@ -71,6 +71,27 @@ function getMethods() {
                      retrieves an \`Array\` of [\`nValues\`] unique (pseudo) random number values from 1 to [\`maxRandomValue\`]
                      Returns \`Array\``,
         },
+        regExForDiacriticals: {
+            description: `returns a regular expression for all diacritical characters.
+                          \`[modifiers]\`: use know RegEx modifiers if applicable (e.g. \`"im"\` or \`"gi"\`)
+                          Returns this \`Regex\`: 
+                          \`/[\\.\\-a-z\\s]|[\\300-\\306\\340-\\346]|[\\310-\\313\\350-\\353]|[\\314-\\317\\354-\\357]|[\\322-\\330\\362-\\370]|[\\331-\\334\\371-\\374]|[\\321-\\361]|[\\307-\\347]/\`[modifiers]`,
+            method: modifiers =>  new RegExp(
+                ['[\\.\\-a-z\\s]|',            // [a-z, . - and space]
+                 '[\\300-\\306\\340-\\346]|',  // all accented A, a
+                 '[\\310-\\313\\350-\\353]|',  // all accented E, e
+                 '[\\314-\\317\\354-\\357]|',  // all accented I, i
+                 '[\\322-\\330\\362-\\370]|',  // all accented O, o
+                 '[\\331-\\334\\371-\\374]|',  // all accented U, u
+                 '[\\321-\\361]|',             // all accented N, n
+                 '[\\307-\\347]'               // all accented C, c
+                ].join(''), modifiers),
+            tests() {
+                Tester.Test(`regExForDiacriticals("i").test("Namibië")`, () => this.method("i").test("Namibië"), true, "should be true" );
+                Tester.Test(`regExForDiacriticals("i").test("Netherlands")`, () => this.method("i").test("Netherlands"), true, "should be true" );
+                Tester.Test(`!regExForDiacriticals("i").test("I^Am~Ëmáil@isok.eu")`, () => !this.method("i").test("I^Am~Ëmáil@isok.eu"), false, "should be false" );
+            }
+        },
         repeatString: {
             description: `returns a \`String\` where [\`string2Repeat\`] is repeated [\`n2Repeat\`] times`,
             method: (string2Repeat, n2Repeat) => Array(n2Repeat).join(string2Repeat) + string2Repeat,
