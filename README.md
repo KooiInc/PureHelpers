@@ -57,6 +57,22 @@ Returns `String`
 Returns `Array`
 
 
+## mapCollection
+
+**Parameters** `collection = [], callback = el`
+
+**It** loop  `Array` or `ArrayLike` collection, mutating the collection (`[shouldMutate = true]`) or not.
+
+
+`[collection]`: the collection, array or arraylike (e.g. dcoument.querySelectorAll('#somediv')
+
+`[callback]`: the method to apply to each element of the collection
+
+`[shouldMutate]`: mutate the original collection or deliver a new collection
+
+Returns `Array`
+
+
 ## regExForDiacriticals
 
 **Parameters** `modifiers`
@@ -75,9 +91,10 @@ Returns this `Regex`:
 
 **Parameters** `string2Repeat, n2Repeat`
 
-**It** returns a `String` where [`string2Repeat`] is repeated [`n2Repeat`] times
+**It** returns a `String` where [`string2Repeat`] is repeated [`n2Repeat`] times.
 
 
+Note: ES>6 contains a native `String.prototype.repeat`
 
 
 ## checkPostalCode

@@ -71,6 +71,32 @@ function getMethods() {
                      retrieves an \`Array\` of [\`nValues\`] unique (pseudo) random number values from 1 to [\`maxRandomValue\`]
                      Returns \`Array\``,
         },
+        mapCollection: {
+            method: (collection = [], callback = el => el, shouldMutate = false) => {
+                const mapNew = f => x => Array.prototype.map.call(x, f);
+                const mapChange = arr => f => Object.keys(arr).map(i => arr[i] = f(arr[i]));
+                return shouldMutate ? mapChange(collection)(callback) : mapNew(callback)(collection);
+            },
+            description: `loop  \`Array\` or \`ArrayLike\` collection, mutating the collection (\`[shouldMutate = true]\`) or not.
+                          \`[collection]\`: the collection, array or arraylike (e.g. dcoument.querySelectorAll('#somediv')
+                          \`[callback]\`: the method to apply to each element of the collection
+                          \`[shouldMutate]\`: mutate the original collection or deliver a new collection
+                          Returns \`Array\``,
+            tests() {
+                let initialValue = [1, 2, 3, 4, 5];
+                Tester.Test(
+                    `mapCollection(/*initialValue*/[1, 2, 3, 4, 5], el => el += 1)`,
+                    () => this.method(initialValue, el => el += 1),
+                    val => val.join() === '2,3,4,5,6' && val.join() !== initialValue.join(),
+                    "Note: observed value is the result, not initialValue");
+                Tester.Test(
+                    `mapCollection(/*initialValue*/[1, 2, 3, 4, 5], el => el += 1, true)`,
+                    () => this.method(initialValue, el => el += 1, true),
+                    () => initialValue.join() !== '1,2,3,4,5' && initialValue.join() === '2,3,4,5,6',
+                    "Note: observed value is initialValue"
+                );
+            }
+        },
         regExForDiacriticals: {
             description: `returns a regular expression for all diacritical characters.
                           \`[modifiers]\`: use know RegEx modifiers if applicable (e.g. \`"im"\` or \`"gi"\`)
@@ -93,7 +119,9 @@ function getMethods() {
             }
         },
         repeatString: {
-            description: `returns a \`String\` where [\`string2Repeat\`] is repeated [\`n2Repeat\`] times`,
+            description: `
+                returns a \`String\` where [\`string2Repeat\`] is repeated [\`n2Repeat\`] times.
+                Note: ES>6 contains a native \`String.prototype.repeat\``,
             method: (string2Repeat, n2Repeat) => Array(n2Repeat).join(string2Repeat) + string2Repeat,
             tests() {
                 Tester.Test(`repeatString("-", 5)`, () => this.method("-", 5), "-----" );

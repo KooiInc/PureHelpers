@@ -18,6 +18,11 @@ const methods = {
         return Array(nValues).join(",").split(",")
             .map(() => randomUnique());
     },
+    mapCollection: (collection = [], callback = el => el, shouldMutate = false) => {
+        const mapNew = f => x => Array.prototype.map.call(x, f);
+        const mapChange = arr => f => Object.keys(arr).map(i => arr[i] = f(arr[i]));
+        return shouldMutate ? mapChange(collection)(callback) : mapNew(callback)(collection);
+    },
     regExForDiacriticals: modifiers => new RegExp(
         ['[\\.\\-a-z\\s]|', // [a-z, . - and space]
             '[\\300-\\306\\340-\\346]|', // all accented A, a
