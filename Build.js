@@ -74,11 +74,12 @@ function getMethods() {
         mapCollection: {
             method: (collection = [], callback = el => el, shouldMutate = false) => {
                 const mapNew = f => x => Array.prototype.map.call(x, f);
-                const mapChange = arr => f => Object.keys(arr).map(i => arr[i] = f(arr[i]));
-                return shouldMutate ? mapChange(collection)(callback) : mapNew(callback)(collection);
+                const mapChange = f => c => Array.prototype.forEach.call(c, (el, i) => c[i] = f(c[i]));
+                return shouldMutate ? mapChange(callback)(collection) : mapNew(callback)(collection);
             },
-            description: `loop  \`Array\` or \`ArrayLike\` collection, mutating the collection (\`[shouldMutate = true]\`) or not.
-                          \`[collection]\`: the collection, array or arraylike (e.g. dcoument.querySelectorAll('#somediv')
+            description: `loops  \`Array\` or \`ArrayLike\` collection and applies \`callback\` to each element.
+                          Looping by default does not change the collection (\`[shouldMutate = false]\`)  
+                          \`[collection]\`: the collection, array or arraylike (e.g. \`document.querySelectorAll('#somediv'))\`
                           \`[callback]\`: the method to apply to each element of the collection
                           \`[shouldMutate]\`: mutate the original collection or deliver a new collection
                           Returns \`Array\``,
@@ -88,12 +89,12 @@ function getMethods() {
                     `mapCollection(/*initialValue*/[1, 2, 3, 4, 5], el => el += 1)`,
                     () => this.method(initialValue, el => el += 1),
                     val => val.join() === '2,3,4,5,6' && val.join() !== initialValue.join(),
-                    "Note: observed value is the result, not initialValue");
+                    `Note: observed value is the result, not initialValue (${initialValue})`);
                 Tester.Test(
                     `mapCollection(/*initialValue*/[1, 2, 3, 4, 5], el => el += 1, true)`,
                     () => this.method(initialValue, el => el += 1, true),
                     () => initialValue.join() !== '1,2,3,4,5' && initialValue.join() === '2,3,4,5,6',
-                    "Note: observed value is initialValue"
+                    `Note: observed = initialValue (${initialValue} observed value itself should be undefined))`
                 );
             }
         },
@@ -598,12 +599,15 @@ function getHeaderLines() {
 
 function cleanup(description, method) {
     const fat_arrows = /=>.*$/mg;
-    const code = method.toString().replace(fat_arrows, '');
+
+    let code = method.toString();
+    const mLine = code.split(/\n/)[0].replace(/\n|\r|\r\n/g, '').replace(/\(|\).+$/g, '');
+    //code = code.replace(fat_arrows, '');
     description = description.replace(/^\s+/gm, "" );
     const docString = description.split(/\n/);
-    const mLine = code.split(/\n/)[0].replace(/\n|\r|\r\n/g, '');
+    //const mLine = code.split(/\n/)[0].replace(/\n|\r|\r\n/g, '');
     return {
-        methodLine: mLine.replace(/\(|\)/g, ''),
+        methodLine: mLine,
         it: docString ? docString[0] : "Not (yet) documented",
         moreInfo: docString
             ? docString.slice(1)

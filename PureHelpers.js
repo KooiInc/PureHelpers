@@ -20,8 +20,8 @@ const methods = {
     },
     mapCollection: (collection = [], callback = el => el, shouldMutate = false) => {
         const mapNew = f => x => Array.prototype.map.call(x, f);
-        const mapChange = arr => f => Object.keys(arr).map(i => arr[i] = f(arr[i]));
-        return shouldMutate ? mapChange(collection)(callback) : mapNew(callback)(collection);
+        const mapChange = f => c => Array.prototype.forEach.call(c, (el, i) => c[i] = f(c[i]));
+        return shouldMutate ? mapChange(callback)(collection) : mapNew(callback)(collection);
     },
     regExForDiacriticals: modifiers => new RegExp(
         ['[\\.\\-a-z\\s]|', // [a-z, . - and space]

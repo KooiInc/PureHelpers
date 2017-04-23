@@ -59,12 +59,14 @@ Returns `Array`
 
 ## mapCollection
 
-**Parameters** `collection = [], callback = el`
+**Parameters** `collection = [], callback = el => el, shouldMutate = false`
 
-**It** loop  `Array` or `ArrayLike` collection, mutating the collection (`[shouldMutate = true]`) or not.
+**It** loops  `Array` or `ArrayLike` collection and applies `callback` to each element.
 
 
-`[collection]`: the collection, array or arraylike (e.g. dcoument.querySelectorAll('#somediv')
+Looping by default does not change the collection (`[shouldMutate = false]`)  
+
+`[collection]`: the collection, array or arraylike (e.g. `document.querySelectorAll('#somediv'))`
 
 `[callback]`: the method to apply to each element of the collection
 
@@ -75,7 +77,7 @@ Returns `Array`
 
 ## regExForDiacriticals
 
-**Parameters** `modifiers`
+**Parameters** `modifiers =>  new RegExp`
 
 **It** returns a regular expression for all diacritical characters.
 
@@ -126,7 +128,7 @@ Returns `Boolean`
 
 ## checkEmailValidity
 
-**Parameters** `emailValueCandidate`
+**Parameters** `emailValueCandidate =>`
 
 **It** checks *syntactic* validity of email address [`emailValueCandidate`].
 
@@ -242,7 +244,7 @@ Returns `Array`
 
 ## isPrime
 
-**Parameters** `number`
+**Parameters** `number => {`
 
 **It** determines (fast) if [`number`] is a prime number
 
@@ -254,7 +256,7 @@ Returns `Boolean`
 
 ## hash2Object
 
-**Parameters** `hashInput`
+**Parameters** `hashInput =>`
 
 **It** deserializes a (url) hash string [`hashInput`] to a key-value pair collection
 
@@ -273,7 +275,7 @@ Returns `Object`
 
 ## uniqueValuesFromArray
 
-**Parameters** `inputArray`
+**Parameters** `inputArray => inputArray.filter functiona`
 
 **It** retrieves unique values from [`inputArray`]
 
