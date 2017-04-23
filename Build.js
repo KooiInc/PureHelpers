@@ -82,7 +82,7 @@ function getMethods() {
                           \`[collection]\`: the collection, array or arraylike (e.g. \`document.querySelectorAll('#somediv'))\`
                           \`[callback]\`: the method to apply to each element of the collection
                           \`[shouldMutate]\`: mutate the original collection or deliver a new collection
-                          Returns \`Array\``,
+                          Returns \`Array\` (\`shouldMutate\` = false) or nothing (\`shouldMutate\` = true)`,
             tests() {
                 let initialValue = [1, 2, 3, 4, 5];
                 Tester.Test(

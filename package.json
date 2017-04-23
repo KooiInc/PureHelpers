@@ -1,6 +1,6 @@
 {
   "name": "purehelpers",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "Importable helper methods",
   "main": "PureHelpers.js",
   "dependencies": {

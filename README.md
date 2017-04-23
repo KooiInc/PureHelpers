@@ -72,7 +72,7 @@ Looping by default does not change the collection (`[shouldMutate = false]`)
 
 `[shouldMutate]`: mutate the original collection or deliver a new collection
 
-Returns `Array`
+Returns `Array` (`shouldMutate` = false) or nothing (`shouldMutate` = true)
 
 
 ## regExForDiacriticals
