@@ -77,7 +77,7 @@ Returns `Array` (`shouldMutate` = false) or nothing (`shouldMutate` = true)
 
 ## regExForDiacriticals
 
-**Parameters** `modifiers =>  new RegExp`
+**Parameters** `modifiers`
 
 **It** returns a regular expression for all diacritical characters.
 
@@ -128,7 +128,7 @@ Returns `Boolean`
 
 ## checkEmailValidity
 
-**Parameters** `emailValueCandidate =>`
+**Parameters** `emailValueCandidate`
 
 **It** checks *syntactic* validity of email address [`emailValueCandidate`].
 
@@ -244,7 +244,7 @@ Returns `Array`
 
 ## isPrime
 
-**Parameters** `number => {`
+**Parameters** `number`
 
 **It** determines (fast) if [`number`] is a prime number
 
@@ -256,7 +256,7 @@ Returns `Boolean`
 
 ## hash2Object
 
-**Parameters** `hashInput =>`
+**Parameters** `hashInput`
 
 **It** deserializes a (url) hash string [`hashInput`] to a key-value pair collection
 
@@ -275,7 +275,7 @@ Returns `Object`
 
 ## uniqueValuesFromArray
 
-**Parameters** `inputArray => inputArray.filter functiona`
+**Parameters** `inputArray`
 
 **It** retrieves unique values from [`inputArray`]
 

@@ -598,16 +598,16 @@ function getHeaderLines() {
 }
 
 function cleanup(description, method) {
-    const fat_arrows = /=>.*$/mg;
-
     let code = method.toString();
-    const mLine = code.split(/\n/)[0].replace(/\n|\r|\r\n/g, '').replace(/\(|\).+$/g, '');
+    let mLine = code.split(/\n/)[0].replace(/\n|\r|\r\n/g, '');
     //code = code.replace(fat_arrows, '');
     description = description.replace(/^\s+/gm, "" );
     const docString = description.split(/\n/);
     //const mLine = code.split(/\n/)[0].replace(/\n|\r|\r\n/g, '');
     return {
-        methodLine: mLine,
+        methodLine: mLine
+                        .substr(0, mLine.lastIndexOf('=>'))
+                        .replace(/\(|\).+$/g, ''),
         it: docString ? docString[0] : "Not (yet) documented",
         moreInfo: docString
             ? docString.slice(1)
