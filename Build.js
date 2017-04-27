@@ -501,7 +501,6 @@ function getMethods() {
             return into;
         },
         import(methods2Import, intoNamespace = {}) {
-            intoNamespace = intoNamespace || {};
             methods2Import = methods2Import instanceof Object && !methods2Import.length
                 ? Object.keys(methods2Import)
                 : methods2Import;
