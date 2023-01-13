@@ -1,0 +1,30 @@
+{
+  "name": "purehelpers",
+  "version": "1.0.13",
+  "description": "Importable helper methods",
+  "main": "PureHelpers.js",
+  "dependencies": {
+    "js-beautify": "^1.6.11"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node build test",
+    "install": "node build createjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KooiInc/PureHelpers.git"
+  },
+  "keywords": [
+    "Pure",
+    "nodejs",
+    "helpers",
+    "methods"
+  ],
+  "author": "Renzo Kooi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KooiInc/PureHelpers/issues"
+  },
+  "homepage": "https://github.com/KooiInc/PureHelpers#readme"
+}
